@@ -63,7 +63,7 @@ begin
         led7_an_o <= (others => '0');
         led7_seg_o <= (others => '0');
     elsif rising_edge(clk_d10) then
-        channel := channel + 1;
+        channel := (channel + 1) mod 4;
         led7_an_o(channel) <= '0';
         led7_seg_o <= digit_i((channel+1) * 8-1 downto channel *8);
     end if;

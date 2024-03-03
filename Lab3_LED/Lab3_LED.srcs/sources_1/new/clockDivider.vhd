@@ -41,7 +41,7 @@ end clockDivider;
 
 architecture Behavioral of clockDivider is
 subtype IntN is integer range (one_cycles when one_cycles > zero_cycles else zero_cycles) downto 0;
-signal clk_out : STD_LOGIC;
+signal clk_out : STD_LOGIC := initial_state;
 begin
 
     process(clk_i,rst_i)

@@ -1,0 +1,2 @@
+Breakpoint File Version 1.0
+57,true,"C:/Users/lukgla/Desktop/Vivado/Lab3_LED/Lab3_LED.srcs/sources_1/new/mem_encoder.vhd"
