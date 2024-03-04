@@ -51,7 +51,7 @@ end component clockDivider;
 signal clk_d10: std_logic;
 begin
     process(clk_d10,rst_i)
-        type channel_type is integer range 3 downto 0;
+        subtype channel_type is natural range 3 downto 0;
         variable channel: channel_type; -- default is 3
     begin
     -- initial state will be overriden by later ocuring assigments;
