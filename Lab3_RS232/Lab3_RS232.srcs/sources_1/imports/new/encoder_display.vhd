@@ -31,15 +31,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity top is
+entity encoder_display is
     Port ( clk_i : in STD_LOGIC;
            btn_i : in STD_LOGIC_VECTOR (3 downto 0);
            sw_i : in STD_LOGIC_VECTOR (7 downto 0);
            led7_an_o : out STD_LOGIC_VECTOR (3 downto 0);
            led7_seg_o : out STD_LOGIC_VECTOR (7 downto 0));
-end top;
+end encoder_display;
 
-architecture Behavioral of top is
+architecture Behavioral of encoder_display is
 component display is
     Port ( clk_i : in STD_LOGIC;
            rst_i: in STD_LOGIC;

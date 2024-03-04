@@ -45,15 +45,14 @@ architecture Behavioral of mem_encoder is
 --alias BTNC is btn_i(2);
 --alias BTNR is btn_i(1);
 --alias BTND is btn_i(0);
-signal tmp: std_logic_vector(6 downto 0);
 type segment_map_type is array(0 to 15) of std_logic_vector (6 downto 0);
 constant SEGMENTMAP:segment_map_type  := ("1000000","1001111","0100100","0110000","0011001","0010010","0000010","1111000","0000000","0010000","0001000","0000011","1000110","0100001","0000110","0001110");
 begin
 
-    process(btn_i,sw_i)
+    process(clk_i)
     begin
         for i in btn_i'range loop
-            if rising_edge(btn_i(i)) then
+            if btn_i(i) = '1' then
                 
                   digit_i(i*8+6 downto i*8) <= SEGMENTMAP(TO_INTEGER(unsigned(sw_i(7 downto 4))));
 --                with  select tmp <=
@@ -78,10 +77,10 @@ begin
             end if;
         end loop;
         for i in 3 downto 0 loop
-            if rising_edge(sw_i(i)) then
+            if sw_i(i) = '1' then
                 digit_i(i*8+7) <= '1';
             end if;
-            if falling_edge(sw_i(i)) then
+            if sw_i(i) = '0' then
                digit_i(i*8+7) <= '0';
             end if;
         end loop;
