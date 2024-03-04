@@ -51,12 +51,12 @@ end component clockDivider;
 signal clk_d10: std_logic;
 begin
     process(clk_d10,rst_i)
-        subtype channel_type is integer range 3 downto 0;
+        type channel_type is integer range 3 downto 0;
         variable channel: channel_type; -- default is 3
     begin
     -- initial state will be overriden by later ocuring assigments;
-    led7_seg_o <= (others => '1');
-    led7_an_o <= (others => '1');
+    -- led7_seg_o <= (others => '1');
+    -- led7_an_o <= (others => '1');
     
     if rst_i = '1' then
         channel :=  0; -- overflow will return to first
@@ -64,7 +64,7 @@ begin
         led7_seg_o <= (others => '0');
     elsif rising_edge(clk_d10) then
         channel := (channel + 1) mod 4;
-        led7_an_o(channel) <= '0';
+        led7_an_o <= (channel => '0',others => '1');
         led7_seg_o <= digit_i((channel+1) * 8-1 downto channel *8);
     end if;
     
