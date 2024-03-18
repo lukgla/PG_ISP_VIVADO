@@ -1,0 +1,8 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/lukgla/Desktop/Vivado/Lab4_RS232_reciver/Lab4_RS232_reciver.sim/sim_1/synth/timing/xsim/tb_time_synth.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clockDivider
+INFO: [VRFC 10-311] analyzing module clockDivider__parameterized1
+INFO: [VRFC 10-311] analyzing module display
+INFO: [VRFC 10-311] analyzing module rs232_reciver
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/lukgla/Desktop/Vivado/Lab4_RS232_reciver/Lab4_RS232_reciver.srcs/sim_1/new/tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb'

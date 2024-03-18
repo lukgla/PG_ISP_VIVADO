@@ -44,13 +44,13 @@ component rs232_reciver is
            led7_an_o : out STD_LOGIC_VECTOR (3 downto 0);
            led7_seg_o : out STD_LOGIC_VECTOR (7 downto 0));
 end component rs232_reciver;
+constant clock_to_baudrate : natural := 100_000_000 /(9600);
 component clockDivider is
-    generic (one_cycles: natural:= 100_000 ; zero_cycles: natural := 100_000; initial_state: STD_LOGIC := '0');
+    generic (one_cycles: natural:= clock_to_baudrate ; zero_cycles: natural := clock_to_baudrate; initial_state: STD_LOGIC := '0');
     Port ( clk_i : in STD_LOGIC;
            rst_i: in STD_LOGIC;
            clk_o : out STD_LOGIC);
 end component clockDivider;
-constant clock_to_baudrate : natural := 100_000_000 /( 9600);
 signal clk_i: std_logic := '0';
 signal rst_i: std_logic := '0';
 signal RXD_i: std_logic := '1';
@@ -60,8 +60,8 @@ signal clk_baud: std_logic := '0';
 begin
 
 clk_i <= not clk_i after 5 ns;
-
-baudrate_comp: clockDivider generic map( one_cycles => clock_to_baudrate,zero_cycles => clock_to_baudrate) port map(
+--clk_baud <= not clk_baud after 104.16 us;
+baudrate_comp: clockDivider port map(
     clk_i => clk_i,
     rst_i => rst_i,
     clk_o => clk_baud
@@ -77,16 +77,42 @@ reciver: rs232_reciver port map(
 
 process
 variable data: std_logic_vector(7 downto 0) := "11000011";
+constant baudrate_base: time := 104.16 us; -- 1/9600
 begin
-    wait until rising_edge(clk_baud);
-    RXD_i <= '0';
-    wait until rising_edge(clk_baud);
-    for i in 0 to 7 loop
-        RXD_i <= data(i);
-        wait until rising_edge(clk_baud);    
-    end loop;
-    RXD_i <= '1';
-    wait until rising_edge(clk_baud);
+        -- 100 %
+        wait until rising_edge(clk_baud);
+        RXD_i <= '0';
+        wait for 104.16 us;
+        for i in 0 to 7 loop
+            RXD_i <= data(i);
+            wait for 104.16 us;    
+        end loop;
+        RXD_i <= '1';
+        wait for 104.16 us;
+        
+        -- 96%
+        wait until rising_edge(clk_baud);
+        RXD_i <= '0';
+        wait for 100 us;
+        for i in 0 to 7 loop
+            RXD_i <= data(i);
+            wait for 100 us;    
+        end loop;
+        RXD_i <= '1';
+        wait for 100 us;
+        
+        -- 104%
+        wait until rising_edge(clk_baud);
+        RXD_i <= '0';
+        wait for 108.32 us;
+        for i in 0 to 7 loop
+            RXD_i <= data(i);
+            wait for 108.32 us;    
+        end loop;
+        RXD_i <= '1';
+        wait for 108.32 us;
+        
+        wait;       
 end process;
 
 end Behavioral;

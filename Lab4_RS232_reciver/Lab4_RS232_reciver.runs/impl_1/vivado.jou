@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Mon Mar 18 23:48:29 2024
+# Process ID: 16788
+# Current directory: C:/Users/lukgla/Desktop/Vivado/Lab4_RS232_reciver/Lab4_RS232_reciver.runs/impl_1
+# Command line: vivado.exe -log rs232_reciver.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source rs232_reciver.tcl -notrace
+# Log file: C:/Users/lukgla/Desktop/Vivado/Lab4_RS232_reciver/Lab4_RS232_reciver.runs/impl_1/rs232_reciver.vdi
+# Journal file: C:/Users/lukgla/Desktop/Vivado/Lab4_RS232_reciver/Lab4_RS232_reciver.runs/impl_1\vivado.jou
+# Running On: DESKTOP-L54QMU3, OS: Windows, CPU Frequency: 3408 MHz, CPU Physical cores: 4, Host memory: 17113 MB
+#-----------------------------------------------------------
+source rs232_reciver.tcl -notrace

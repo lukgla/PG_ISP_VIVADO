@@ -88,7 +88,7 @@ component clockDivider is
 end component clockDivider;
 
 signal baudrate: std_logic := '0';
-constant clock_to_baudrate : natural := 100_000_000 /(16 * 9600);
+constant clock_to_baudrate : natural := 100_000_000 /(16 * 9600)/2;
 
 signal digit_i: std_logic_vector (31 downto 0) := (others => '1');
 signal bit_buffer: std_logic_vector(7 downto 0);
