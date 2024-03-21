@@ -83,7 +83,7 @@ end component rs232_reciver;
 
 signal rom_addr: std_logic_vector(11 downto 0);
 signal rom_data: std_logic_vector(7 downto 0);
-signal fifo_full: std_logic;
+--signal fifo_full: std_logic;
 signal fifo_empty: std_logic;
 
 signal fifo_data_i: std_logic_vector(7 downto 0);
@@ -118,7 +118,7 @@ incoming_char_buff : fifo_mem
     wr_en => fifo_data_write_enable,
     rd_en => fifo_data_read_enable,
     dout => fifo_data_o,
-    full => fifo_full,
+    full => ld0,
     empty => fifo_empty
   );
   
@@ -216,7 +216,8 @@ begin
       when LF => if encoder_en = '1' then 
         encoder_data <= std_logic_vector(to_unsigned(10,8));
         if y = 15 then              
-          encoder := collecting; 
+          encoder := collecting;
+          chars_in_buffer := 0; 
         else
           if chars_in_buffer /= 0 then
             encoder:= sending;
