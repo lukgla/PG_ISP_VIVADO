@@ -37,7 +37,7 @@ entity rs232_reciver is
            rst_i : in STD_LOGIC;
            RXD_i : in STD_LOGIC;
            data_o: out std_logic_vector (7 downto 0);
-           data_en: out std_logic_vector (1 downto 0)
+           data_en: out std_logic_vector (1 downto 0) := "00"
            );
 end rs232_reciver;
 
@@ -98,7 +98,7 @@ end function seven_seg;
 
 signal digit_i: std_logic_vector (31 downto 0) := (others => '1');
 signal bit_buffer: std_logic_vector(7 downto 0);
-signal clock_16: integer range 0 to 15;
+signal clock_16: integer range 0 to 15 := 0;
 
 type reciver_status is (Listen,Start,Recive,Stop,Error);
 signal state: reciver_status;

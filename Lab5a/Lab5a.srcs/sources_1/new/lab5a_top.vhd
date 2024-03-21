@@ -84,13 +84,13 @@ end component rs232_reciver;
 signal rom_addr: std_logic_vector(11 downto 0);
 signal rom_data: std_logic_vector(7 downto 0);
 --signal fifo_full: std_logic;
-signal fifo_empty: std_logic;
+signal fifo_empty: std_logic := '1';
 
 signal fifo_data_i: std_logic_vector(7 downto 0);
-signal fifo_data_write_enable: std_logic; -- signal should only be there for 1 clk cycle
-signal fifo_data_read_enable: std_logic; -- signal should only be there for 1 clk cycle
+signal fifo_data_write_enable: std_logic := '0'; -- signal should only be there for 1 clk cycle
+signal fifo_data_read_enable: std_logic := '0'; -- signal should only be there for 1 clk cycle
 signal slow_fifo_data_write_enable: std_logic_vector(1 downto 0):= "00"; 
-signal slow_fifo_data_read_enable: std_logic_vector(1 downto 0):= "00";
+--signal slow_fifo_data_read_enable: std_logic_vector(1 downto 0):= "00";
 signal fifo_data_o: std_logic_vector(7 downto 0);
 
 -- baudrate
@@ -101,7 +101,7 @@ constant clock_to_baudrate : natural := 100_000_000 /(16 * 9600)/2;
 signal encoder_en: std_logic := '0';
 signal encoder_data: std_logic_vector(7 downto 0);
 signal slow_encoder_en:std_logic_vector(1 downto 0) := "00";
-signal encoder_empty: std_logic := '0';
+signal encoder_empty: std_logic := '1';
 begin
 
 rom_comp : char_mem
