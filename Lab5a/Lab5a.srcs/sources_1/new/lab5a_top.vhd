@@ -89,14 +89,18 @@ signal fifo_empty: std_logic;
 signal fifo_data_i: std_logic_vector(7 downto 0);
 signal fifo_data_write_enable: std_logic; -- signal should only be there for 1 clk cycle
 signal fifo_data_read_enable: std_logic; -- signal should only be there for 1 clk cycle
-signal slow_fifo_data_write_enable: std_logic_vector(1 downto 0); 
-signal slow_fifo_data_read_enable: std_logic_vector(1 downto 0);
+signal slow_fifo_data_write_enable: std_logic_vector(1 downto 0):= "00"; 
+signal slow_fifo_data_read_enable: std_logic_vector(1 downto 0):= "00";
 signal fifo_data_o: std_logic_vector(7 downto 0);
 
 -- baudrate
 signal baud_clk: std_logic := '0';
 constant clock_to_baudrate : natural := 100_000_000 /(16 * 9600)/2;
 
+-- encoder
+signal encoder_en: std_logic := '0';
+signal encoder_data: std_logic_vector(7 downto 0);
+signal slow_encoder_en:std_logic_vector(1 downto 0) := "00";
 begin
 
 rom_comp : char_mem
@@ -146,29 +150,126 @@ rs232_recv: rs232_reciver
     data_en => slow_fifo_data_write_enable
  );
 
+encoder: process(clk_i)
+  variable chars_to_print:  string(17 downto 0);
+  variable chars_in_buffer: integer range 0 to 17 := 0;
+  variable x: integer range 0 to 17;
+  variable y: integer range 0 to 15;
+  variable byte_pos: integer range 0 to 7;
+  type encoder_type is (collecting,full,sending,CR,LF);
+  variable encoder: encoder_type;
+  variable en: std_logic := 0;
+  variable encoder_char: char;
+begin
+  if rising_edge(clk_i) then
+    case encoder is
+      when collecting =>
+        if en = '1' then -- read last requested value
+          chars_to_print(chars_in_buffer) <= fifo_data_o;
+          if chars_in_buffer /= 17 and fifo_data_o /= "00001101" then -- full or enter
+              chars_in_buffer := chars_in_buffer + 1;
+            else
+              encoder <= full;
+              if chars_in_buffer = 0 then -- the only char in buffer is new line
+                encoder <= CR;
+              end if;
+          end if;
+        end if;
+        if fifo_empty = '0' and encoder = collecting then -- read more
+          en:= '1';
+        else
+          en:= '0';
+        end if;
+      when full => -- one cycle to request from rom
+        rom_addr <= chars_to_print(0) & "0000";
+        encoder := sending;
+        x := 0;
+        y := 0;
+        byte_pos := 0;
+      when sending => 
+        if encoder_en = '1' then
+          encoder_char := chars_to_print(x) when chars_to_print(x) > "00100000" and chars_to_print(x) < "01111111";
+          encoder_data <= encoder_char when rom_data(byte_pos)='1' else std_logic_vector(to_unsigned(character'pos(' '),8));
+          -- next
+          if byte_pos = 7 then
+              if x = chars_in_buffer then 
+                encoder := CR;                
+              else
+                x:= x+1;
+                byte_pos := 0;
+              end if;
+            else
+              byte_pos = byte_pos + 1;
+          end if;
+        end if;
+      when CR => if encoder_en = '1' then encoder_data <= std_logic_vector(to_unsigned(13,8)); encoder:= LF end if;
+      when LF => if encoder_en = '1' then 
+        encoder_data <= std_logic_vector(to_unsigned(10,8));
+        if y = 15 then              
+          encoder := collecting; 
+        else
+          if chars_in_buffer /= 0 then
+            encoder:= sending;
+          else
+            encoder := CR;
+          end if;
+            y:= y+1;
+            byte_pos := 0;
+            x:= 0;
+        end if;
+      end if;
+    end case;
+    fifo_data_read_en <= en;
+    encoder_empty <= not (encoder = sending | CR | RF);
+  end if;
+end process;
+
+
 sender: process(baud_clk)
-    variable chars_to_print:  string(17 downto 0);
-    variable chars_in_buffer: integer range 17 downto 0 := 0;
-    variable x: integer range 0 to 17;
-    variable y: integer range 0 to 15;
     variable byte_pos: integer range 0 to 7;
     type sender_state_type is (waiting_for_data,start,sending,stop);
     variable sender_state: sender_state_type;
+    variable counter_16: integer range 0 to 15;
 begin
-    if rising_edge(baud_clk) then
-        if sender_state = waiting_for_data then
-            
-        end if;
-        
+    if rising_edge(baud_clk) then      
         case sender_state is
-            when waiting_for_data => null;
-            when start => null;
-            when sending => null;
-            when stop => null;
+            when waiting_for_data => if encoder_empty = '0' then
+              -- send slow one cycle en
+              case slow_encoder_en is
+                when "00" | "10" => slow_encoder_en <= "01";
+                when others => slow_encoder_en <= "10";
+              end case;
+              sender_state := start;
+              counter := 0;
+              TXD <= '0';
+              byte_pos := 0;
+            end if;
+            when start => if clock_16 = 15 then sender_state := sending;end if;
+            when sending => if clock_16 = 0 then
+              TXD <= encoder_data(byte_pos);
+              if byte_pos = 7 then
+                  sender_state := stop;
+                else
+                  byte_pos := byte_pos +1;
+              end if;
+            end if;
+            when stop => if clock_16 = 0 then 
+                TXD <= '1';
+              elsif clock_16 = 15 then
+                sender_state := waiting_for_data;
+            end if;
         end case;
     
     
     end if;
 end process sender;
+
+encoder_read_enabler: one_cycle_enabler 
+    PORT MAP (
+        clk_i => clk_i,
+        en_i => slow_encoder_en,
+        en_o => encoder_en    
+    );
+    
 
 end Behavioral;
