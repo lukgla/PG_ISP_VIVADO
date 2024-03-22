@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="72.709 ns"></ZoomEndTime>
-      <Cursor1Time time="11.835 ns"></Cursor1Time>
+      <ZoomStartTime time="28,779.659290 us"></ZoomStartTime>
+      <ZoomEndTime time="30,011.043619 us"></ZoomEndTime>
+      <Cursor1Time time="30,001.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="156"></NameColumnWidth>
-      <ValueColumnWidth column_width="79"></ValueColumnWidth>
+      <ValueColumnWidth column_width="71"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="16" />
+   <WVObjectSize size="17" />
    <wvobject fp_name="/tb/clk_i" type="logic">
       <obj_property name="ElementShortName">clk_i</obj_property>
       <obj_property name="ObjectShortName">clk_i</obj_property>
@@ -36,6 +36,10 @@
       <obj_property name="ElementShortName">TXD_o</obj_property>
       <obj_property name="ObjectShortName">TXD_o</obj_property>
    </wvobject>
+   <wvobject fp_name="/tb/reciver/rs232_send/sender_state" type="other">
+      <obj_property name="ElementShortName">sender_state</obj_property>
+      <obj_property name="ObjectShortName">sender_state</obj_property>
+   </wvobject>
    <wvobject fp_name="/tb/ld0" type="logic">
       <obj_property name="ElementShortName">ld0</obj_property>
       <obj_property name="ObjectShortName">ld0</obj_property>
@@ -43,14 +47,6 @@
    <wvobject fp_name="/tb/clk_baud" type="logic">
       <obj_property name="ElementShortName">clk_baud</obj_property>
       <obj_property name="ObjectShortName">clk_baud</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb/reciver/rom_data" type="array">
-      <obj_property name="ElementShortName">rom_data[7:0]</obj_property>
-      <obj_property name="ObjectShortName">rom_data[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb/reciver/rom_addr" type="array">
-      <obj_property name="ElementShortName">rom_addr[11:0]</obj_property>
-      <obj_property name="ObjectShortName">rom_addr[11:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/tb/reciver/fifo_empty" type="logic">
       <obj_property name="ElementShortName">fifo_empty</obj_property>
@@ -83,5 +79,13 @@
    <wvobject fp_name="/tb/reciver/encoder_en" type="logic">
       <obj_property name="ElementShortName">encoder_en</obj_property>
       <obj_property name="ObjectShortName">encoder_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reciver/slow_encoder_en" type="array">
+      <obj_property name="ElementShortName">slow_encoder_en[1:0]</obj_property>
+      <obj_property name="ObjectShortName">slow_encoder_en[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reciver/slow_fifo_data_write_enable" type="array">
+      <obj_property name="ElementShortName">slow_fifo_data_write_enable[1:0]</obj_property>
+      <obj_property name="ObjectShortName">slow_fifo_data_write_enable[1:0]</obj_property>
    </wvobject>
 </wave_config>

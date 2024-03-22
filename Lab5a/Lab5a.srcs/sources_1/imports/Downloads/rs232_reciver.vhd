@@ -137,13 +137,14 @@ begin
                     when "00" | "10" => en := "01";
                     when others => en:= "10";
                 end case;
-                data_en <= en;
             else
                 state <= Error;
             end if;
         end if;
         when Error => state <= Listen;
     end case;
+    data_en <= en;
+
     end if;
 end process;
 
