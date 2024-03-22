@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Thu Mar 21 21:55:47 2024
+| Date         : Fri Mar 22 16:05:22 2024
 | Host         : DESKTOP-L54QMU3 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file lab5a_top_control_sets_placed.rpt
 | Design       : lab5a_top
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    40 |
-|    Minimum number of control sets                        |    40 |
+| Total control sets                                       |    42 |
+|    Minimum number of control sets                        |    42 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |   108 |
+| Unused register locations in slices containing registers |   114 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,14 +39,14 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    40 |
+| Total control sets |    42 |
 | >= 0 to < 4        |     9 |
-| >= 4 to < 6        |     5 |
-| >= 6 to < 8        |     1 |
-| >= 8 to < 10       |    20 |
-| >= 10 to < 12      |     2 |
+| >= 4 to < 6        |     7 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |    21 |
+| >= 10 to < 12      |     1 |
 | >= 12 to < 14      |     2 |
-| >= 14 to < 16      |     0 |
+| >= 14 to < 16      |     1 |
 | >= 16              |     1 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
@@ -58,61 +58,63 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              34 |           13 |
+| No           | No                    | No                     |              33 |           14 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              13 |            4 |
-| Yes          | No                    | No                     |             217 |           61 |
+| No           | Yes                   | No                     |              17 |            6 |
+| Yes          | No                    | No                     |             223 |           60 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |               4 |            1 |
+| Yes          | Yes                   | No                     |               5 |            1 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+------------------+-------------------------------------------------------------------------------------------------+----------------------------------+------------------+----------------+--------------+
-|   Clock Signal   |                                          Enable Signal                                          |         Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
-+------------------+-------------------------------------------------------------------------------------------------+----------------------------------+------------------+----------------+--------------+
-|  clk_o_BUFG      | TXD_o_i_1_n_0                                                                                   |                                  |                1 |              1 |         1.00 |
-|  clk_o_BUFG      | rs232_recv/bit_buffer[4]                                                                        |                                  |                1 |              1 |         1.00 |
-|  clk_o_BUFG      | rs232_recv/bit_buffer[0]                                                                        |                                  |                1 |              1 |         1.00 |
-|  clk_o_BUFG      | rs232_recv/bit_buffer[6]                                                                        |                                  |                1 |              1 |         1.00 |
-|  clk_o_BUFG      | rs232_recv/bit_buffer[7]                                                                        |                                  |                1 |              1 |         1.00 |
-|  clk_o_BUFG      | rs232_recv/bit_buffer[3]                                                                        |                                  |                1 |              1 |         1.00 |
-|  clk_o_BUFG      | rs232_recv/bit_buffer[5]                                                                        |                                  |                1 |              1 |         1.00 |
-|  clk_o_BUFG      | rs232_recv/bit_buffer[2]                                                                        |                                  |                1 |              1 |         1.00 |
-|  clk_o_BUFG      | rs232_recv/bit_buffer[1]                                                                        |                                  |                1 |              1 |         1.00 |
-|  clk_i_IBUF_BUFG | encoder_read_enabler/y                                                                          | encoder.y[3]_i_1_n_0             |                1 |              4 |         4.00 |
-|  clk_o_BUFG      |                                                                                                 | rs232_recv/clock_16[3]_i_1_n_0   |                1 |              4 |         4.00 |
-|  clk_o_BUFG      | FSM_onehot_slow_encoder_en[2]_i_1_n_0                                                           |                                  |                1 |              4 |         4.00 |
-|  clk_i_IBUF_BUFG | encoder_read_enabler/en_o_reg_2[0]                                                              |                                  |                2 |              5 |         2.50 |
-|  clk_i_IBUF_BUFG | encoder_read_enabler/E[0]                                                                       |                                  |                2 |              5 |         2.50 |
-|  clk_i_IBUF_BUFG | encoder_read_enabler/en_o_reg_1[0]                                                              |                                  |                3 |              7 |         2.33 |
-|  clk_i_IBUF_BUFG | chars_to_print[11]                                                                              |                                  |                2 |              8 |         4.00 |
-|  clk_i_IBUF_BUFG | chars_to_print[12]                                                                              |                                  |                1 |              8 |         8.00 |
-|  clk_i_IBUF_BUFG | chars_to_print[16]                                                                              |                                  |                2 |              8 |         4.00 |
-|  clk_i_IBUF_BUFG | chars_to_print[1]                                                                               |                                  |                2 |              8 |         4.00 |
-|  clk_i_IBUF_BUFG | chars_to_print[8]                                                                               |                                  |                2 |              8 |         4.00 |
-|  clk_i_IBUF_BUFG | rom_addr                                                                                        |                                  |                2 |              8 |         4.00 |
-|  clk_i_IBUF_BUFG | chars_to_print[15]                                                                              |                                  |                2 |              8 |         4.00 |
-|  clk_i_IBUF_BUFG | chars_to_print[7]                                                                               |                                  |                4 |              8 |         2.00 |
-|  clk_i_IBUF_BUFG | chars_to_print[2]                                                                               |                                  |                2 |              8 |         4.00 |
-|  clk_i_IBUF_BUFG | chars_to_print[0]                                                                               |                                  |                2 |              8 |         4.00 |
-|  clk_i_IBUF_BUFG | chars_to_print[6]                                                                               |                                  |                2 |              8 |         4.00 |
-|  clk_i_IBUF_BUFG | chars_to_print[13]                                                                              |                                  |                1 |              8 |         8.00 |
-|  clk_i_IBUF_BUFG | chars_to_print[14]                                                                              |                                  |                2 |              8 |         4.00 |
-|  clk_i_IBUF_BUFG | chars_to_print[17]                                                                              |                                  |                2 |              8 |         4.00 |
-|  clk_i_IBUF_BUFG | chars_to_print[3]                                                                               |                                  |                1 |              8 |         8.00 |
-|  clk_i_IBUF_BUFG | chars_to_print[9]                                                                               |                                  |                3 |              8 |         2.67 |
-|  clk_i_IBUF_BUFG | chars_to_print[4]                                                                               |                                  |                1 |              8 |         8.00 |
-|  clk_i_IBUF_BUFG | chars_to_print[5]                                                                               |                                  |                1 |              8 |         8.00 |
-|  clk_i_IBUF_BUFG | chars_to_print[10]                                                                              |                                  |                2 |              8 |         4.00 |
-|  clk_i_IBUF_BUFG |                                                                                                 | baudrate_comp/counter[8]_i_1_n_0 |                3 |              9 |         3.00 |
-|  clk_o_BUFG      | rs232_recv/FSM_onehot_en[2]_i_1_n_0                                                             |                                  |                2 |             11 |         5.50 |
-|  clk_o_BUFG      |                                                                                                 |                                  |                5 |             11 |         2.20 |
-|  clk_i_IBUF_BUFG | incoming_char_buff/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/grss.rsts/E[0] |                                  |                4 |             12 |         3.00 |
-|  clk_i_IBUF_BUFG | incoming_char_buff/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/E[0] |                                  |                2 |             12 |         6.00 |
-|  clk_i_IBUF_BUFG |                                                                                                 |                                  |                8 |             23 |         2.88 |
-+------------------+-------------------------------------------------------------------------------------------------+----------------------------------+------------------+----------------+--------------+
++------------------+-------------------------------------------------------------------------------------------------+-------------------------------------+------------------+----------------+--------------+
+|   Clock Signal   |                                          Enable Signal                                          |           Set/Reset Signal          | Slice Load Count | Bel Load Count | Bels / Slice |
++------------------+-------------------------------------------------------------------------------------------------+-------------------------------------+------------------+----------------+--------------+
+|  clk_o_BUFG      | rs232_recv/bit_buffer[0]                                                                        |                                     |                1 |              1 |         1.00 |
+|  clk_o_BUFG      | rs232_recv/bit_buffer[4]                                                                        |                                     |                1 |              1 |         1.00 |
+|  clk_o_BUFG      | rs232_recv/bit_buffer[2]                                                                        |                                     |                1 |              1 |         1.00 |
+|  clk_o_BUFG      | rs232_recv/bit_buffer[5]                                                                        |                                     |                1 |              1 |         1.00 |
+|  clk_o_BUFG      | rs232_recv/bit_buffer[6]                                                                        |                                     |                1 |              1 |         1.00 |
+|  clk_o_BUFG      | rs232_recv/bit_buffer[7]                                                                        |                                     |                1 |              1 |         1.00 |
+|  clk_o_BUFG      | rs232_recv/bit_buffer[1]                                                                        |                                     |                1 |              1 |         1.00 |
+|  clk_o_BUFG      | rs232_recv/bit_buffer[3]                                                                        |                                     |                1 |              1 |         1.00 |
+|  clk_o_BUFG      | rs232_send/TXD_o_i_1_n_0                                                                        |                                     |                1 |              1 |         1.00 |
+|  clk_o_BUFG      |                                                                                                 | rs232_recv/clock_16[3]_i_1__0_n_0   |                1 |              4 |         4.00 |
+|  clk_o_BUFG      |                                                                                                 | rs232_send/clock_16[3]_i_1_n_0      |                2 |              4 |         2.00 |
+|  clk_i_IBUF_BUFG | encoder_com/y                                                                                   |                                     |                1 |              4 |         4.00 |
+|  clk_i_IBUF_BUFG | encoder_com/FSM_onehot_encoder[4]_i_1_n_0                                                       |                                     |                2 |              5 |         2.50 |
+|  clk_i_IBUF_BUFG | encoder_com/x                                                                                   |                                     |                1 |              5 |         5.00 |
+|  clk_i_IBUF_BUFG | encoder_com/encoder_char_0                                                                      | encoder_com/encoder_char[7]_i_1_n_0 |                1 |              5 |         5.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_in_buffer                                                                     |                                     |                1 |              5 |         5.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[11]_13                                                                 |                                     |                2 |              8 |         4.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[4]_8                                                                   |                                     |                2 |              8 |         4.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[0][7]_i_1_n_0                                                          |                                     |                1 |              8 |         8.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[9]_4                                                                   |                                     |                2 |              8 |         4.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[15]_12                                                                 |                                     |                2 |              8 |         4.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[5]_9                                                                   |                                     |                2 |              8 |         4.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[10]_16                                                                 |                                     |                2 |              8 |         4.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[17]_2                                                                  |                                     |                2 |              8 |         4.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[14]_15                                                                 |                                     |                2 |              8 |         4.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[12]_14                                                                 |                                     |                2 |              8 |         4.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[6]_6                                                                   |                                     |                2 |              8 |         4.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[7]_7                                                                   |                                     |                3 |              8 |         2.67 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[13]_17                                                                 |                                     |                1 |              8 |         8.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[16]_1                                                                  |                                     |                2 |              8 |         4.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[1]_5                                                                   |                                     |                2 |              8 |         4.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[3]_10                                                                  |                                     |                2 |              8 |         4.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[2]_11                                                                  |                                     |                1 |              8 |         8.00 |
+|  clk_i_IBUF_BUFG | encoder_com/chars_buffer[8]_3                                                                   |                                     |                2 |              8 |         4.00 |
+|  clk_i_IBUF_BUFG | encoder_com/encoder_data[7]_i_1_n_0                                                             |                                     |                3 |              8 |         2.67 |
+|  clk_i_IBUF_BUFG | encoder_com/rom_addr                                                                            |                                     |                2 |              8 |         4.00 |
+|  clk_i_IBUF_BUFG |                                                                                                 | baudrate_comp/counter[8]_i_1_n_0    |                3 |              9 |         3.00 |
+|  clk_o_BUFG      | rs232_recv/FSM_onehot_en[2]_i_1_n_0                                                             |                                     |                2 |             11 |         5.50 |
+|  clk_i_IBUF_BUFG | incoming_char_buff/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/grss.rsts/E[0] |                                     |                3 |             12 |         4.00 |
+|  clk_i_IBUF_BUFG | incoming_char_buff/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/E[0] |                                     |                2 |             12 |         6.00 |
+|  clk_o_BUFG      |                                                                                                 |                                     |                6 |             14 |         2.33 |
+|  clk_i_IBUF_BUFG |                                                                                                 |                                     |                8 |             19 |         2.38 |
++------------------+-------------------------------------------------------------------------------------------------+-------------------------------------+------------------+----------------+--------------+
 
 

@@ -34,10 +34,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity rs232_sender is
   Port (
     baud_clk: in std_logic;
-    queue_empty: in std_logic;
-    slow_queue_en: buffer std_logic_vector (1 downto 0);
+    queue_empty: in std_logic := '0';
+    slow_queue_en: out std_logic_vector (1 downto 0) := "00";
     queue_data: in std_logic_vector (7 downto 0);
-    TXD_o: out std_logic
+    TXD_o: out std_logic := '1'
    );
 end rs232_sender;
 
@@ -46,7 +46,9 @@ architecture Behavioral of rs232_sender is
     type sender_state_type is (waiting_for_data,start,sending,stop);
     signal sender_state: sender_state_type := waiting_for_data;
     signal clock_16: integer range 0 to 15 := 0;
+    signal slow_en: std_logic_vector (1 downto 0) := "00";
 begin
+slow_queue_en <= slow_en;
 sender: process(baud_clk)
 
 begin
@@ -55,9 +57,9 @@ begin
             when waiting_for_data => 
             if queue_empty = '0' then
               -- send slow one cycle en
-              case slow_queue_en is
-                when "00" | "10" => slow_queue_en <= "01";
-                when others => slow_queue_en <= "10";
+              case slow_en is
+                when "00" | "10" => slow_en <= "01";
+                when others => slow_en <= "10";
               end case;
               sender_state <= start;
               

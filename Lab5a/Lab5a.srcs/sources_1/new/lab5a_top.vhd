@@ -78,7 +78,7 @@ component rs232_sender is
   Port (
     baud_clk: in std_logic;
     queue_empty: in std_logic;
-    slow_queue_en: buffer std_logic_vector (1 downto 0);
+    slow_queue_en: out std_logic_vector (1 downto 0);
     queue_data: in std_logic_vector (7 downto 0);
     TXD_o: out std_logic
    );
@@ -88,9 +88,9 @@ component encoder is
     clk_i: in std_logic;
     fifo_empty: in std_logic;
     fifo_data: in std_logic_vector(7 downto 0);
-    fifo_en: buffer std_logic;
+    fifo_en_o: out std_logic;
     
-    encoder_en: buffer std_logic;
+    encoder_en_i: in std_logic;
     encoder_empty: out std_logic;
     encoder_data: out std_logic_vector(7 downto 0)
   );
@@ -141,9 +141,9 @@ encoder_com: encoder
     clk_i => clk_i,
     fifo_empty => fifo_empty,
     fifo_data => fifo_data_o,
-    fifo_en => fifo_data_read_enable,
+    fifo_en_o => fifo_data_read_enable,
     
-    encoder_en => encoder_en,
+    encoder_en_i => encoder_en,
     encoder_empty => encoder_empty,
     encoder_data => encoder_data
   );

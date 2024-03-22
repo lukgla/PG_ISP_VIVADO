@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Thu Mar 21 21:56:32 2024
+| Date             : Fri Mar 22 16:06:15 2024
 | Host             : DESKTOP-L54QMU3 running 64-bit major release  (build 9200)
 | Command          : report_power -file lab5a_top_power_routed.rpt -pb lab5a_top_power_summary_routed.pb -rpx lab5a_top_power_routed.rpx
 | Design           : lab5a_top
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.102        |
+| Total On-Chip Power (W)  | 0.101        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.005        |
+| Dynamic (W)              | 0.004        |
 | Device Static (W)        | 0.097        |
 | Effective TJA (C/W)      | 4.6          |
 | Max Ambient (C)          | 84.5         |
@@ -53,18 +53,18 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.001 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |      526 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      173 |     63400 |            0.27 |
-|   Register     |    <0.001 |      268 |    126800 |            0.21 |
+| Slice Logic    |    <0.001 |      521 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      175 |     63400 |            0.28 |
+|   Register     |    <0.001 |      278 |    126800 |            0.22 |
 |   BUFG         |    <0.001 |        1 |        32 |            3.13 |
 |   CARRY4       |    <0.001 |        3 |     15850 |            0.02 |
-|   F7/F8 Muxes  |    <0.001 |       19 |     63400 |            0.03 |
-|   Others       |     0.000 |       19 |       --- |             --- |
-| Signals        |    <0.001 |      431 |       --- |             --- |
+|   F7/F8 Muxes  |    <0.001 |        1 |     63400 |           <0.01 |
+|   Others       |     0.000 |       23 |       --- |             --- |
+| Signals        |    <0.001 |      449 |       --- |             --- |
 | Block RAM      |     0.002 |      1.5 |       135 |            1.11 |
 | I/O            |    <0.001 |       16 |       210 |            7.62 |
 | Static Power   |     0.097 |          |           |                 |
-| Total          |     0.102 |          |           |                 |
+| Total          |     0.101 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -140,13 +140,13 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+------------------------+-----------+
-| Name                   | Power (W) |
-+------------------------+-----------+
-| lab5a_top              |     0.005 |
-|   rom_comp             |     0.002 |
-|     U0                 |     0.002 |
-|       inst_blk_mem_gen |     0.002 |
-+------------------------+-----------+
++---------------+-----------+
+| Name          | Power (W) |
++---------------+-----------+
+| lab5a_top     |     0.004 |
+|   encoder_com |     0.003 |
+|     rom_comp  |     0.002 |
+|       U0      |     0.002 |
++---------------+-----------+
 
 

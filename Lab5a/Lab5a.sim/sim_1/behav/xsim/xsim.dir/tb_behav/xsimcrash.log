@@ -1,0 +1,18 @@
+Exception at PC 0x00007FFC42B6CF3A
+Attemped to read address 0x0000000000000000
+Printing stacktrace...
+
+[0] (iki_vlog_cast+0x1ca) [0x00007FFC42B6CF3A]
+[1] (iki_vlog_cast+0x1ca) [0x00007FFC42B6CF3A]
+[2]  [0x0000000000420F52]
+[3] (iki_vlog_q_remove+0x27e9) [0x00007FFC42B54219]
+[4] (xsi_trace_all+0x104c4) [0x00007FFC42B8FB94]
+[5]  [0x000000000042575F]
+[6] (xsi_trace_all+0x141ea) [0x00007FFC42B938BA]
+[7] (xsi_trace_all+0xb14f) [0x00007FFC42B8A81F]
+[8] (xsi_trace_all+0x9cec) [0x00007FFC42B893BC]
+[9] (xsi_trace_all+0x9859) [0x00007FFC42B88F29]
+[10] (configthreadlocale+0x92) [0x00007FFCCE161BB2]
+[11] (BaseThreadInitThunk+0x14) [0x00007FFCCEAB7344]
+[12] (RtlUserThreadStart+0x21) [0x00007FFCD04C26B1]
+Done

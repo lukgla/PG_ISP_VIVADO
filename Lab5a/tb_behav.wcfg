@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="28,779.659290 us"></ZoomStartTime>
-      <ZoomEndTime time="30,011.043619 us"></ZoomEndTime>
-      <Cursor1Time time="30,001.000000 us"></Cursor1Time>
+      <ZoomStartTime time="224.685975380 ms"></ZoomStartTime>
+      <ZoomEndTime time="1,137.469190381 ms"></ZoomEndTime>
+      <Cursor1Time time="160.130765000 ms"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="156"></NameColumnWidth>
-      <ValueColumnWidth column_width="71"></ValueColumnWidth>
+      <ValueColumnWidth column_width="67"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="17" />
    <wvobject fp_name="/tb/clk_i" type="logic">
@@ -55,6 +55,7 @@
    <wvobject fp_name="/tb/reciver/fifo_data_i" type="array">
       <obj_property name="ElementShortName">fifo_data_i[7:0]</obj_property>
       <obj_property name="ObjectShortName">fifo_data_i[7:0]</obj_property>
+      <obj_property name="Radix">ASCIIRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb/reciver/fifo_data_write_enable" type="logic">
       <obj_property name="ElementShortName">fifo_data_write_enable</obj_property>
@@ -67,6 +68,7 @@
    <wvobject fp_name="/tb/reciver/fifo_data_o" type="array">
       <obj_property name="ElementShortName">fifo_data_o[7:0]</obj_property>
       <obj_property name="ObjectShortName">fifo_data_o[7:0]</obj_property>
+      <obj_property name="Radix">ASCIIRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb/reciver/encoder_empty" type="logic">
       <obj_property name="ElementShortName">encoder_empty</obj_property>
@@ -75,6 +77,7 @@
    <wvobject fp_name="/tb/reciver/encoder_data" type="array">
       <obj_property name="ElementShortName">encoder_data[7:0]</obj_property>
       <obj_property name="ObjectShortName">encoder_data[7:0]</obj_property>
+      <obj_property name="Radix">ASCIIRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb/reciver/encoder_en" type="logic">
       <obj_property name="ElementShortName">encoder_en</obj_property>

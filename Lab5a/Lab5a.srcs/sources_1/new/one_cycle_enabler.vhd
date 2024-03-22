@@ -21,6 +21,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -39,19 +40,21 @@ entity one_cycle_enabler is
 end one_cycle_enabler;
 
 architecture Behavioral of one_cycle_enabler is
+    signal en_o_l: std_logic := '0';
     signal old: std_logic_vector(1 downto 0) := "00";
 
 begin
     process(clk_i)
-        variable en: std_logic_vector(1 downto 0) := "00";
     begin
         if rising_edge(clk_i) then
-            en := en_i;
+            en_o_l <= '0';
             old <= en_i;
-            en_o <= '0';
-            if en /= old and (en = "10" or en = "01") then
-                en_o <= '1';
+            if en_i /= "00" then
+                if old /= en_i then
+                   en_o_l <= '1'; 
+                end if;
             end if;
         end if; 
     end process;
+    en_o <= en_o_l;
 end Behavioral;

@@ -37,10 +37,10 @@ entity encoder is
     clk_i: in std_logic;
     fifo_empty: in std_logic;
     fifo_data: in std_logic_vector(7 downto 0);
-    fifo_en: buffer std_logic;
+    fifo_en_o: out std_logic := '0';
     
-    encoder_en: buffer std_logic;
-    encoder_empty: out std_logic;
+    encoder_en_i: in std_logic;
+    encoder_empty: out std_logic := '1';
     encoder_data: out std_logic_vector(7 downto 0) := (others => '0')
   );
 end encoder;
@@ -66,6 +66,14 @@ END component char_mem;
   
   signal rom_addr: std_logic_vector(11 downto 0) := (others => '0');
   signal rom_data: std_logic_vector(7 downto 0) := (others => '0');
+  
+--  signal encoder_en: std_logic := '0';
+  signal fifo_en: std_logic := '0';
+
+  -- const
+  constant space_char:std_logic_vector  := std_logic_vector(to_unsigned(character'pos(' '),8));
+  constant star_char:std_logic_vector  := std_logic_vector(to_unsigned(character'pos('*'),8));
+
 begin
 
 
@@ -75,7 +83,8 @@ rom_comp : char_mem
     addra => rom_addr,
     douta => rom_data
   );
-
+--encoder_en_i <= encoder_en;
+fifo_en_o <= fifo_en;
 process(clk_i)
 begin
   if rising_edge(clk_i) then
@@ -104,16 +113,16 @@ begin
         y <= 0;
         byte_pos <= 0;
       when sending => 
-        if encoder_en = '1' then
+        if encoder_en_i = '1' then
            if chars_buffer(x) > "00100000" and chars_buffer(x) < "01111111" then
             encoder_char <= chars_buffer(x);
             else
-            encoder_char <= std_logic_vector(to_unsigned(character'pos('*'),8));
+            encoder_char <= star_char;
            end if;
            if rom_data(byte_pos)='1' then
              encoder_data <= encoder_char;
            else
-             encoder_data <=std_logic_vector(to_unsigned(character'pos(' '),8));
+             encoder_data <= space_char;
            end if;
           -- next
           if byte_pos = 7 then
@@ -122,13 +131,14 @@ begin
               else
                 x<= x+1;
                 byte_pos <= 0;
+--                rom_addr <= chars_buffer(x+1) & STD_LOGIC_VECTOR(TO_UNSIGNED(y,4));
               end if;
             else
               byte_pos <= byte_pos + 1;
           end if;
         end if;
-      when CR => if encoder_en = '1' then encoder_data <= std_logic_vector(to_unsigned(13,8)); encoder<= LF; end if;
-      when LF => if encoder_en = '1' then 
+      when CR => if encoder_en_i = '1' then encoder_data <= std_logic_vector(to_unsigned(13,8)); encoder<= LF; end if;
+      when LF => if encoder_en_i = '1' then 
         encoder_data <= std_logic_vector(to_unsigned(10,8));
         if y = 15 then              
           encoder <= collecting;
