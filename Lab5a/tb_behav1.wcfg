@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="96.715086484 ms"></ZoomStartTime>
+      <ZoomEndTime time="360.769300704 ms"></ZoomEndTime>
+      <Cursor1Time time="164.993810994 ms"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="156"></NameColumnWidth>
+      <ValueColumnWidth column_width="59"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="19" />
+   <wvobject fp_name="/tb/clk_i" type="logic">
+      <obj_property name="ElementShortName">clk_i</obj_property>
+      <obj_property name="ObjectShortName">clk_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/clk_baud" type="logic">
+      <obj_property name="ElementShortName">clk_baud</obj_property>
+      <obj_property name="ObjectShortName">clk_baud</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/RXD_i" type="logic">
+      <obj_property name="ElementShortName">RXD_i</obj_property>
+      <obj_property name="ObjectShortName">RXD_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/TXD_o" type="logic">
+      <obj_property name="ElementShortName">TXD_o</obj_property>
+      <obj_property name="ObjectShortName">TXD_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ld0" type="logic">
+      <obj_property name="ElementShortName">ld0</obj_property>
+      <obj_property name="ObjectShortName">ld0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reciver/fifo_data_i" type="array">
+      <obj_property name="ElementShortName">fifo_data_i[7:0]</obj_property>
+      <obj_property name="ObjectShortName">fifo_data_i[7:0]</obj_property>
+      <obj_property name="Radix">ASCIIRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reciver/fifo_data_write_enable" type="logic">
+      <obj_property name="ElementShortName">fifo_data_write_enable</obj_property>
+      <obj_property name="ObjectShortName">fifo_data_write_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reciver/fifo_data_o" type="array">
+      <obj_property name="ElementShortName">fifo_data_o[7:0]</obj_property>
+      <obj_property name="ObjectShortName">fifo_data_o[7:0]</obj_property>
+      <obj_property name="Radix">ASCIIRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reciver/fifo_data_read_enable" type="logic">
+      <obj_property name="ElementShortName">fifo_data_read_enable</obj_property>
+      <obj_property name="ObjectShortName">fifo_data_read_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reciver/encoder_data" type="array">
+      <obj_property name="ElementShortName">encoder_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">encoder_data[7:0]</obj_property>
+      <obj_property name="Radix">ASCIIRADIX</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reciver/encoder_en" type="logic">
+      <obj_property name="ElementShortName">encoder_en</obj_property>
+      <obj_property name="ObjectShortName">encoder_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reciver/encoder_empty" type="logic">
+      <obj_property name="ElementShortName">encoder_empty</obj_property>
+      <obj_property name="ObjectShortName">encoder_empty</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reciver/encoder_com/x" type="other">
+      <obj_property name="ElementShortName">x</obj_property>
+      <obj_property name="ObjectShortName">x</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reciver/encoder_com/y" type="other">
+      <obj_property name="ElementShortName">y</obj_property>
+      <obj_property name="ObjectShortName">y</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reciver/encoder_com/byte_pos" type="other">
+      <obj_property name="ElementShortName">byte_pos</obj_property>
+      <obj_property name="ObjectShortName">byte_pos</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reciver/encoder_com/encoder" type="other">
+      <obj_property name="ElementShortName">encoder</obj_property>
+      <obj_property name="ObjectShortName">encoder</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reciver/encoder_com/encoder_char" type="array">
+      <obj_property name="ElementShortName">encoder_char[7:0]</obj_property>
+      <obj_property name="ObjectShortName">encoder_char[7:0]</obj_property>
+      <obj_property name="Radix">ASCIIRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reciver/encoder_com/rom_addr" type="array">
+      <obj_property name="ElementShortName">rom_addr[11:0]</obj_property>
+      <obj_property name="ObjectShortName">rom_addr[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reciver/encoder_com/rom_data" type="array">
+      <obj_property name="ElementShortName">rom_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rom_data[7:0]</obj_property>
+   </wvobject>
+</wave_config>

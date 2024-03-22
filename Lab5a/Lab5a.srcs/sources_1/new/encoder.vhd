@@ -131,7 +131,7 @@ begin
               else
                 x<= x+1;
                 byte_pos <= 0;
---                rom_addr <= chars_buffer(x+1) & STD_LOGIC_VECTOR(TO_UNSIGNED(y,4));
+                rom_addr <= chars_buffer(x+1) & STD_LOGIC_VECTOR(TO_UNSIGNED(y,4));
               end if;
             else
               byte_pos <= byte_pos + 1;
@@ -152,6 +152,7 @@ begin
             y<= y+1;
             byte_pos <= 0;
             x<= 0;
+            rom_addr <= chars_buffer(0) & STD_LOGIC_VECTOR(TO_UNSIGNED(y + 1,4));
         end if;
       end if;
     end case;
