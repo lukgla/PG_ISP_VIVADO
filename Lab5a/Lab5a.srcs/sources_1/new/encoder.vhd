@@ -74,6 +74,7 @@ END component char_mem;
   constant space_char:std_logic_vector  := std_logic_vector(to_unsigned(character'pos(' '),8));
   constant star_char:std_logic_vector  := std_logic_vector(to_unsigned(character'pos('*'),8));
 
+    signal rom_lag: std_logic :='0';
 begin
 
 
@@ -89,7 +90,7 @@ process(clk_i)
 begin
   if rising_edge(clk_i) then
     fifo_en<= '0';
-
+    rom_lag <= '0';
     case encoder is
       when collecting =>
         if fifo_en = '1' then -- read last requested value
@@ -100,6 +101,9 @@ begin
               encoder <= full;
               if chars_in_buffer = 0 then -- the only char in buffer is new line
                 encoder <= CR;
+                x <= 0;
+                y <= "0000";
+                byte_pos <= 0;
               end if;
           end if;
         end if;
@@ -112,8 +116,9 @@ begin
         x <= 0;
         y <= "0000";
         byte_pos <= 0;
+        rom_lag <= '1';
       when sending => 
-        if encoder_en_i = '1' then
+        if encoder_en_i = '1' and rom_lag = '0' then
            if chars_buffer(x) > "00100000" and chars_buffer(x) < "01111111" then
             encoder_char <= chars_buffer(x);
             else
@@ -132,6 +137,7 @@ begin
                 x<= x+1;
                 byte_pos <= 0;
                 rom_addr <= chars_buffer(x+1) & STD_LOGIC_VECTOR(y);
+                rom_lag <= '1';
               end if;
             else
               byte_pos <= byte_pos + 1;
@@ -156,7 +162,7 @@ begin
         end if;
       end if;
     end case;
-    if (encoder = collecting) or (encoder = full) then
+    if ((encoder = collecting) or (encoder = full)) then
       encoder_empty <= '1';
     else
       encoder_empty <= '0';
