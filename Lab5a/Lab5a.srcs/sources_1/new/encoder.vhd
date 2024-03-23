@@ -119,7 +119,7 @@ begin
             else
             encoder_char <= star_char;
            end if;
-           if rom_data(byte_pos)='1' then
+           if rom_data(7-byte_pos)='1' then
              encoder_data <= encoder_char;
            else
              encoder_data <= space_char;
