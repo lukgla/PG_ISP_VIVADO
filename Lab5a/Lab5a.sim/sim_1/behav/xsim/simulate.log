@@ -1,7 +1,5 @@
 Time resolution is 1 ps
  Block Memory Generator module loading initial data...
-FATAL_ERROR: Vivado Simulator kernel has discovered an exceptional condition from which it cannot recover. Process will terminate. For technical support on this issue, please open a WebCase with this project attached at http://www.xilinx.com/support.
-Time: 0 ps  Iteration: 0  Process: /tb/reciver/encoder_com/rom_comp/inst/native_mem_module.blk_mem_gen_v8_4_7_inst/init_memory
-  File: /wrk/ci/prod/2023.2/sw/continuous/3079/packages/customer/vivado/data/ip/xilinx/blk_mem_gen_v8_4/simulation/blk_mem_gen_v8_4.v
-
-HDL Line: /wrk/ci/prod/2023.2/sw/continuous/3079/packages/customer/vivado/data/ip/xilinx/fifo_generator_v13_2/simulation/fifo_generator_vlog_beh.v:1027
+ Block Memory Generator data initialization complete.
+Block Memory Generator module tb.reciver.encoder_com.rom_comp.inst.\native_mem_module.blk_mem_gen_v8_4_7_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+INFO: xsimkernel Simulation Memory Usage: 17992 KB (Peak: 17992 KB), Simulation CPU Usage: 125108 ms

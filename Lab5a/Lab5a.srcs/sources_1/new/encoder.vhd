@@ -103,7 +103,7 @@ begin
               end if;
           end if;
         end if;
-        if fifo_empty = '0' and encoder = collecting then -- read more
+        if fifo_empty = '0' and encoder = collecting and fifo_en = '0' then -- read more
           fifo_en<= '1';
         end if;
       when full => -- one cycle to request from rom

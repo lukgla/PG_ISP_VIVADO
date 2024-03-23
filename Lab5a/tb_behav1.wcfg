@@ -11,31 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="96.715086484 ms"></ZoomStartTime>
-      <ZoomEndTime time="360.769300704 ms"></ZoomEndTime>
-      <Cursor1Time time="164.993810994 ms"></Cursor1Time>
+      <ZoomStartTime time="117.104686186 ms"></ZoomStartTime>
+      <ZoomEndTime time="142.346041287 ms"></ZoomEndTime>
+      <Cursor1Time time="4.858486395 ms"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="156"></NameColumnWidth>
-      <ValueColumnWidth column_width="59"></ValueColumnWidth>
+      <NameColumnWidth column_width="199"></NameColumnWidth>
+      <ValueColumnWidth column_width="72"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="19" />
-   <wvobject fp_name="/tb/clk_i" type="logic">
-      <obj_property name="ElementShortName">clk_i</obj_property>
-      <obj_property name="ObjectShortName">clk_i</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb/clk_baud" type="logic">
-      <obj_property name="ElementShortName">clk_baud</obj_property>
-      <obj_property name="ObjectShortName">clk_baud</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb/RXD_i" type="logic">
-      <obj_property name="ElementShortName">RXD_i</obj_property>
-      <obj_property name="ObjectShortName">RXD_i</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb/TXD_o" type="logic">
-      <obj_property name="ElementShortName">TXD_o</obj_property>
-      <obj_property name="ObjectShortName">TXD_o</obj_property>
-   </wvobject>
+   <WVObjectSize size="15" />
    <wvobject fp_name="/tb/ld0" type="logic">
       <obj_property name="ElementShortName">ld0</obj_property>
       <obj_property name="ObjectShortName">ld0</obj_property>
@@ -62,7 +46,6 @@
       <obj_property name="ElementShortName">encoder_data[7:0]</obj_property>
       <obj_property name="ObjectShortName">encoder_data[7:0]</obj_property>
       <obj_property name="Radix">ASCIIRADIX</obj_property>
-      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject fp_name="/tb/reciver/encoder_en" type="logic">
       <obj_property name="ElementShortName">encoder_en</obj_property>
@@ -76,9 +59,9 @@
       <obj_property name="ElementShortName">x</obj_property>
       <obj_property name="ObjectShortName">x</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb/reciver/encoder_com/y" type="other">
-      <obj_property name="ElementShortName">y</obj_property>
-      <obj_property name="ObjectShortName">y</obj_property>
+   <wvobject fp_name="/tb/reciver/encoder_com/y" type="array">
+      <obj_property name="ElementShortName">y[3:0]</obj_property>
+      <obj_property name="ObjectShortName">y[3:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/tb/reciver/encoder_com/byte_pos" type="other">
       <obj_property name="ElementShortName">byte_pos</obj_property>
