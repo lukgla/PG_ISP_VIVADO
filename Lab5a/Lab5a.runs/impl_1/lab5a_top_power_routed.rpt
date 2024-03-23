@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Sat Mar 23 23:27:18 2024
+| Date             : Sat Mar 23 23:51:05 2024
 | Host             : DESKTOP-L54QMU3 running 64-bit major release  (build 9200)
 | Command          : report_power -file lab5a_top_power_routed.rpt -pb lab5a_top_power_summary_routed.pb -rpx lab5a_top_power_routed.rpx
 | Design           : lab5a_top
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.103        |
+| Total On-Chip Power (W)  | 0.106        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.006        |
+| Dynamic (W)              | 0.009        |
 | Device Static (W)        | 0.097        |
 | Effective TJA (C/W)      | 4.6          |
 | Max Ambient (C)          | 84.5         |
@@ -52,19 +52,19 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.002 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |      584 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      224 |     63400 |            0.35 |
-|   Register     |    <0.001 |      279 |    126800 |            0.22 |
+| Clocks         |     0.001 |        3 |       --- |             --- |
+| Slice Logic    |    <0.001 |      666 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      244 |     63400 |            0.38 |
+|   Register     |    <0.001 |      324 |    126800 |            0.26 |
+|   CARRY4       |    <0.001 |        8 |     15850 |            0.05 |
 |   BUFG         |    <0.001 |        1 |        32 |            3.13 |
-|   CARRY4       |    <0.001 |        3 |     15850 |            0.02 |
 |   F7/F8 Muxes  |    <0.001 |        1 |     63400 |           <0.01 |
-|   Others       |     0.000 |       23 |       --- |             --- |
-| Signals        |    <0.001 |      502 |       --- |             --- |
+|   Others       |     0.000 |       26 |       --- |             --- |
+| Signals        |    <0.001 |      567 |       --- |             --- |
 | Block RAM      |     0.002 |      1.5 |       135 |            1.11 |
-| I/O            |    <0.001 |       16 |       210 |            7.62 |
+| I/O            |     0.004 |       16 |       210 |            7.62 |
 | Static Power   |     0.097 |          |           |                 |
-| Total          |     0.103 |          |           |                 |
+| Total          |     0.106 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,7 +76,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Vccint    |       1.000 |     0.020 |       0.005 |      0.015 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.018 |       0.000 |      0.018 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.004 |       0.000 |      0.004 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.005 |       0.001 |      0.004 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -143,7 +143,7 @@ Table of Contents
 +---------------+-----------+
 | Name          | Power (W) |
 +---------------+-----------+
-| lab5a_top     |     0.006 |
+| lab5a_top     |     0.009 |
 |   encoder_com |     0.004 |
 |     rom_comp  |     0.002 |
 |       U0      |     0.002 |

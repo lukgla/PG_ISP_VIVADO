@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Sat Mar 23 23:27:18 2024
+| Date         : Sat Mar 23 23:51:05 2024
 | Host         : DESKTOP-L54QMU3 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file lab5a_top_methodology_drc_routed.rpt -pb lab5a_top_methodology_drc_routed.pb -rpx lab5a_top_methodology_drc_routed.rpx
 | Design       : lab5a_top
@@ -23,11 +23,11 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 43
+             Violations found: 70
 +-----------+------------------+-------------------------------+------------+
 | Rule      | Severity         | Description                   | Violations |
 +-----------+------------------+-------------------------------+------------+
-| TIMING-17 | Critical Warning | Non-clocked sequential cell   | 42         |
+| TIMING-17 | Critical Warning | Non-clocked sequential cell   | 69         |
 | TIMING-18 | Warning          | Missing input or output delay | 1          |
 +-----------+------------------+-------------------------------+------------+
 
@@ -180,65 +180,200 @@ Related violations: <none>
 
 TIMING-17#30 Critical Warning
 Non-clocked sequential cell  
-The clock pin rs232_send/FSM_onehot_slow_en_reg[0]/C is not reached by a timing clock
+The clock pin rs232_recv/digit_i_reg[17]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#31 Critical Warning
 Non-clocked sequential cell  
-The clock pin rs232_send/FSM_onehot_slow_en_reg[1]/C is not reached by a timing clock
+The clock pin rs232_recv/digit_i_reg[18]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#32 Critical Warning
 Non-clocked sequential cell  
-The clock pin rs232_send/FSM_onehot_slow_en_reg[2]/C is not reached by a timing clock
+The clock pin rs232_recv/digit_i_reg[19]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#33 Critical Warning
 Non-clocked sequential cell  
-The clock pin rs232_send/FSM_sequential_sender_state_reg[0]/C is not reached by a timing clock
+The clock pin rs232_recv/digit_i_reg[20]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#34 Critical Warning
 Non-clocked sequential cell  
-The clock pin rs232_send/FSM_sequential_sender_state_reg[1]/C is not reached by a timing clock
+The clock pin rs232_recv/digit_i_reg[21]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#35 Critical Warning
 Non-clocked sequential cell  
-The clock pin rs232_send/TXD_o_reg/C is not reached by a timing clock
+The clock pin rs232_recv/digit_i_reg[22]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#36 Critical Warning
 Non-clocked sequential cell  
-The clock pin rs232_send/byte_pos_reg[0]/C is not reached by a timing clock
+The clock pin rs232_recv/digit_i_reg[23]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#37 Critical Warning
 Non-clocked sequential cell  
-The clock pin rs232_send/byte_pos_reg[1]/C is not reached by a timing clock
+The clock pin rs232_recv/digit_i_reg[25]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#38 Critical Warning
 Non-clocked sequential cell  
-The clock pin rs232_send/byte_pos_reg[2]/C is not reached by a timing clock
+The clock pin rs232_recv/digit_i_reg[26]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#39 Critical Warning
 Non-clocked sequential cell  
-The clock pin rs232_send/clock_16_reg[0]/C is not reached by a timing clock
+The clock pin rs232_recv/digit_i_reg[27]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#40 Critical Warning
 Non-clocked sequential cell  
-The clock pin rs232_send/clock_16_reg[1]/C is not reached by a timing clock
+The clock pin rs232_recv/digit_i_reg[28]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#41 Critical Warning
 Non-clocked sequential cell  
-The clock pin rs232_send/clock_16_reg[2]/C is not reached by a timing clock
+The clock pin rs232_recv/digit_i_reg[29]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#42 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_recv/digit_i_reg[30]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#43 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_recv/digit_i_reg[31]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#44 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_recv/display_comp/channel_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#45 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_recv/display_comp/channel_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#46 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_recv/display_comp/led7_an_o_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#47 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_recv/display_comp/led7_an_o_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#48 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_recv/display_comp/led7_an_o_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#49 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_recv/display_comp/led7_an_o_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#50 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_recv/display_comp/led7_seg_o_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#51 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_recv/display_comp/led7_seg_o_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#52 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_recv/display_comp/led7_seg_o_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#53 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_recv/display_comp/led7_seg_o_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#54 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_recv/display_comp/led7_seg_o_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#55 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_recv/display_comp/led7_seg_o_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#56 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_recv/display_comp/led7_seg_o_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#57 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_send/FSM_onehot_slow_en_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#58 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_send/FSM_onehot_slow_en_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#59 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_send/FSM_onehot_slow_en_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#60 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_send/FSM_sequential_sender_state_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#61 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_send/FSM_sequential_sender_state_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#62 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_send/TXD_o_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#63 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_send/byte_pos_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#64 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_send/byte_pos_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#65 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_send/byte_pos_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#66 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_send/clock_16_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#67 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_send/clock_16_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#68 Critical Warning
+Non-clocked sequential cell  
+The clock pin rs232_send/clock_16_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#69 Critical Warning
 Non-clocked sequential cell  
 The clock pin rs232_send/clock_16_reg[3]/C is not reached by a timing clock
 Related violations: <none>

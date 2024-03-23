@@ -37,7 +37,10 @@ entity rs232_reciver is
            rst_i : in STD_LOGIC;
            RXD_i : in STD_LOGIC;
            data_o: out std_logic_vector (7 downto 0);
-           data_en: out std_logic_vector (1 downto 0) := "00"
+           data_en: out std_logic_vector (1 downto 0) := "00";
+           clk_i: in std_logic;
+           led7_an_o : out STD_LOGIC_VECTOR (3 downto 0);
+           led7_seg_o : out STD_LOGIC_VECTOR (7 downto 0)
            );
 end rs232_reciver;
 
@@ -56,13 +59,6 @@ begin
 --     ---
 --      3
 
---      0
---     --- 
---  5 |   | 1
---     ---   <- 6
---  4 |   | 2
---     ---
---      3
 case data_in is 
    when "0001" => tmp := "1111001";   --1
    when "0010" => tmp := "0100100";   --2
@@ -92,7 +88,13 @@ reorder(6) := tmp(0);
 
 return (reorder);
 end function seven_seg;
-
+component display is
+    Port ( clk_i : in STD_LOGIC;
+           rst_i: in STD_LOGIC;
+           digit_i : in STD_LOGIC_VECTOR (31 downto 0);
+           led7_an_o : out STD_LOGIC_VECTOR (3 downto 0);
+           led7_seg_o : out STD_LOGIC_VECTOR (7 downto 0));
+end component display;
 
 
 
@@ -104,6 +106,14 @@ type reciver_status is (Listen,Start,Recive,Stop,Error);
 signal state: reciver_status;
 
 begin
+
+display_comp: display port map(
+    clk_i => clk_i,
+    rst_i => rst_i,
+    digit_i => digit_i,
+    led7_an_o => led7_an_o,
+    led7_seg_o => led7_seg_o
+);
 
 process(baud_clk)
     variable bit_nr: integer range 0 to 7 := 0;
@@ -137,6 +147,8 @@ begin
                     when "00" | "10" => en := "01";
                     when others => en:= "10";
                 end case;
+                digit_i(31 downto 25) <= seven_seg(bit_buffer(7 downto 4));
+                digit_i(23 downto 17) <= seven_seg(bit_buffer(3 downto 0)); 
             else
                 state <= Error;
             end if;

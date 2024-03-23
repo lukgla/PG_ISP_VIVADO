@@ -71,7 +71,10 @@ component rs232_reciver is
            rst_i : in STD_LOGIC;
            RXD_i : in STD_LOGIC;
            data_o: out std_logic_vector (7 downto 0);
-           data_en: out std_logic_vector (1 downto 0)
+           data_en: out std_logic_vector (1 downto 0);
+           clk_i: in std_logic;
+           led7_an_o : out STD_LOGIC_VECTOR (3 downto 0);
+           led7_seg_o : out STD_LOGIC_VECTOR (7 downto 0)
            );
 end component rs232_reciver;
 component rs232_sender is
@@ -160,7 +163,10 @@ rs232_recv: rs232_reciver
     rst_i => '0',
     RXD_i => RXD_i,
     data_o => fifo_data_i,
-    data_en => slow_fifo_data_write_enable
+    data_en => slow_fifo_data_write_enable,
+    clk_i => clk_i,
+    led7_an_o => led7_an_o,
+    led7_seg_o => led7_seg_o
  );
 
 

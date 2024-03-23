@@ -90,6 +90,7 @@ OPTRACE "Adding files" START { }
 add_files C:/Users/lukgla/Downloads/chargen.coe
 read_vhdl -library xil_defaultlib {
   C:/Users/lukgla/Desktop/Vivado/Lab5a/Lab5a.srcs/sources_1/imports/Downloads/clockDivider.vhd
+  C:/Users/lukgla/Desktop/Vivado/Lab5a/Lab5a.srcs/sources_1/imports/Downloads/display.vhd
   C:/Users/lukgla/Desktop/Vivado/Lab5a/Lab5a.srcs/sources_1/new/encoder.vhd
   C:/Users/lukgla/Desktop/Vivado/Lab5a/Lab5a.srcs/sources_1/new/one_cycle_enabler.vhd
   C:/Users/lukgla/Desktop/Vivado/Lab5a/Lab5a.srcs/sources_1/imports/Downloads/rs232_reciver.vhd
