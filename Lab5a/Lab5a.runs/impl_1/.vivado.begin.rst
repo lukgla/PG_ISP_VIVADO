@@ -8,3 +8,13 @@
     <Process Command="vivado.bat" Owner="lukgla" Host="DESKTOP-L54QMU3" Pid="4708" HostCore="8" HostMemory="017113108480">
     </Process>
 </ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="lukgla" Host="DESKTOP-L54QMU3" Pid="596" HostCore="8" HostMemory="017113108480">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="lukgla" Host="DESKTOP-L54QMU3" Pid="8000" HostCore="8" HostMemory="017113108480">
+    </Process>
+</ProcessHandle>

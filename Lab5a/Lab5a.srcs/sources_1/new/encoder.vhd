@@ -56,7 +56,7 @@ END component char_mem;
 
   type arr_of_chars is array(natural range<>) of std_logic_vector(7 downto 0); 
   signal chars_buffer:  arr_of_chars(17 downto 0) := (others => (others => '0'));
-  signal chars_in_buffer: integer range 0 to 17 := 0;
+  signal chars_in_buffer: integer range 0 to 18 := 0;
   signal x: integer range 0 to 17;
   signal y: unsigned (3 downto 0) := (others => '0');
   signal byte_pos: integer range 0 to 7 := 0;
@@ -126,7 +126,7 @@ begin
            end if;
           -- next
           if byte_pos = 7 then
-              if x = chars_in_buffer then 
+              if x+1 >= chars_in_buffer then 
                 encoder <= CR;                
               else
                 x<= x+1;
@@ -152,7 +152,7 @@ begin
             y<= y+1;
             byte_pos <= 0;
             x<= 0;
-            rom_addr <= chars_buffer(0) & std_logic_vector (y);
+            rom_addr <= chars_buffer(0) & std_logic_vector (y + 1);
         end if;
       end if;
     end case;
