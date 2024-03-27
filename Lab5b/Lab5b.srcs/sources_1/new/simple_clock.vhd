@@ -40,6 +40,7 @@ end simple_clock;
 
 architecture Behavioral of simple_clock is
     signal counter: natural range 0 to div := 0;
+    signal clk: std_logic := '0';
 begin
     process(clk_i,rst_i)
     begin
@@ -49,7 +50,8 @@ begin
              clk_o <= '0';
            else
             if counter >= div then
-                clk_o <= not clk_o;
+                clk <= not clk;
+                clk_o <= not clk;
                 counter <= 0;
             else
                 counter  <= counter + 1;
@@ -57,5 +59,4 @@ begin
            end if; 
         end if;
     end process;
-
 end Behavioral;

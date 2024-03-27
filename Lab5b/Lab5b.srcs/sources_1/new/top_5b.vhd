@@ -134,7 +134,7 @@ vmem : video_mem
    addrb => vmem_o_addr,
    doutb => vmem_o_data
  );
-your_instance_name : singen
+sgen : singen
  PORT MAP (
    aclk => clk_i,
    aclken => sgen_en,
@@ -169,28 +169,28 @@ begin
   end if;
 end process btn_proc;
 
-sw_proc: process(clk_i)
-begin
-  sgen_rst <= '0';
-  if rising_edge(clk_i) then
-    if btn_dbounced(3) = '1' then
-      sgen_ch1_conf_hz <= sw_i;
-    end if;
-    if btn_dbounced(2) = '1' then
-      sgen_ch2_conf_hz <= sw_i;
-    end if;
-    if btn_dbounced(1) = '1' then
-      sgen_ch2_conf_phase <= sw_i;
-    end if;
-    if btn_dbounced(0) = '1' then
-      sgen_state <= prog1;
-      -- TODO
-      -- clear screen
-      -- set new values for gen and start
-      sgen_rst <= '1';
-    end if;
-  end if;
-end process sw_proc;
+-- sw_proc: process(clk_i)
+-- begin
+--   sgen_rst <= '0';
+--   if rising_edge(clk_i) then
+--     if btn_dbounced(3) = '1' then
+--       sgen_ch1_conf_hz <= sw_i;
+--     end if;
+--     if btn_dbounced(2) = '1' then
+--       sgen_ch2_conf_hz <= sw_i;
+--     end if;
+--     if btn_dbounced(1) = '1' then
+--       sgen_ch2_conf_phase <= sw_i;
+--     end if;
+--     if btn_dbounced(0) = '1' then
+--       sgen_state <= prog1;
+--       -- TODO
+--       -- clear screen
+--       -- set new values for gen and start
+--       sgen_rst <= '1';
+--     end if;
+--   end if;
+-- end process sw_proc;
 
 process(clk_i)
 begin
@@ -243,7 +243,7 @@ begin
         sgen_ch2_data <= sgen_data_data(10 downto 0);
         -- write to vmem
         vmem_i_data <= (0 => '1',others => '0');
-        vmem_i_addr <= sgen_ch1_data; -- some math magic logic
+        -- vmem_i_addr <= sgen_ch1_data; -- some math magic logic
         -- 384 -> 192 (128 + 64)
       end if;
     end if;
@@ -286,17 +286,17 @@ begin
       end if;
       if vga_v_state=active and vga_y >= (480- 384)/2 and vga_y < ((480- 384)/2+384) then
         if vga_x >= (640- 384)/2 and vga_x < ((640- 384)/2+384) then
-          if vmem_o_data /= (others => '0') then
-            vga_color <= '1';
-          end if;
+--          if vmem_o_data /= (others => '0') then
+--            vga_color <= '1';
+--          end if;
           vga_pixel <= vga_pixel + 1;
-          vmem_o_addr <= vga_pixel + 1;          
+--          vmem_o_addr <= vga_pixel + 1;          
         end if;
       end if;  
       when front => 
         if vga_h_counter = 15 then 
           vga_h_state <= sync;
-          vga_h_counter <= '0';
+--          vga_h_counter <= '0';
         end if;
       when sync => 
         hsync_o <= '0';
