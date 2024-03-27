@@ -32,18 +32,30 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity simple_clock is
-    generic(div: natural := 1000)
+    generic(div: natural := 1000);
     Port ( clk_i : in STD_LOGIC;
            rst_i : in STD_LOGIC;
-           clk_o : out STD_LOGIC);
+           clk_o : out STD_LOGIC := '0');
 end simple_clock;
 
 architecture Behavioral of simple_clock is
-    
+    signal counter: natural range 0 to div := 0;
 begin
     process(clk_i,rst_i)
     begin
-    
+        if rising_edge(clk_i) then
+           if rst_i = '1' then
+             counter <= 0;
+             clk_o <= '0';
+           else
+            if counter >= div then
+                clk_o <= not clk_o;
+                counter <= 0;
+            else
+                counter  <= counter + 1;
+            end if;
+           end if; 
+        end if;
     end process;
 
 end Behavioral;
