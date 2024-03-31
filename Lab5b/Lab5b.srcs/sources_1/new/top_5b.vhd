@@ -69,12 +69,12 @@ COMPONENT singen
   );
 END COMPONENT;
 -- First channel phase must be 0
-component simple_clock is
-  generic(div: natural := 1000);
-  Port ( clk_i : in STD_LOGIC;
-         rst_i : in STD_LOGIC;
-         clk_o : out STD_LOGIC := '0');
-end component simple_clock;
+component clockDivider is
+    generic (one_cycles: natural:= 100_000 ; zero_cycles: natural := 100_000; initial_state: STD_LOGIC := '0');
+    Port ( clk_i : in STD_LOGIC;
+           rst_i: in STD_LOGIC;
+           clk_o : out STD_LOGIC);
+end component clockDivider;
 -- video mem
 signal vmem_i_addr: STD_LOGIC_VECTOR(17 DOWNTO 0) := (others => '0');
 signal vmem_o_addr: STD_LOGIC_VECTOR(17 DOWNTO 0) := (others => '0');
@@ -83,7 +83,7 @@ signal vmem_i_data: std_logic_vector(0 downto 0):= "0";
 signal vmem_o_data: std_logic_vector(0 downto 0):= "0";
 -- sgen
 signal sgen_en: std_logic := '1';
-signal sgen_rst: std_logic := '0';
+signal sgen_rst: std_logic := '1';
 signal sgen_conf_en: std_logic := '0';
 signal sgen_conf_data: std_logic_vector(31 downto 0) := (others => '0');
 signal sgen_conf_en2: std_logic := '0';
@@ -148,9 +148,10 @@ sgen : singen
    event_s_config_tlast_unexpected => open
  );
 
-clk_4: simple_clock
+clk_4: clockDivider
 generic map (
-  div => 4 -- 25 Mhz
+  one_cycles => 4, -- 25 Mhz
+  zero_cycles => 4
 )
 port map (
   clk_i => clk_i,

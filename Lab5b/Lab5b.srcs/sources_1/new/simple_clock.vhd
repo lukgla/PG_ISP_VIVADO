@@ -47,11 +47,10 @@ begin
         if rising_edge(clk_i) then
            if rst_i = '1' then
              counter <= 0;
-             clk_o <= '0';
+             clk <= '0';
            else
             if counter >= div then
                 clk <= not clk;
-                clk_o <= not clk;
                 counter <= 0;
             else
                 counter  <= counter + 1;
@@ -59,4 +58,6 @@ begin
            end if; 
         end if;
     end process;
+    clk_o <= clk;
+
 end Behavioral;
