@@ -43,12 +43,16 @@ component clockDivider is
             clk_o : out STD_LOGIC);
 end component clockDivider;
 signal vga_clk: std_logic := '0';
+-- track display
 signal vga_x: integer range 0 to 640 := 0;
 signal vga_y: integer range 0 to 480 := 0;
 signal vga_pixel: unsigned(17 downto 0) := (others => '0');
+-- track state duration
 signal vga_h_counter: integer range 0 to 800 := 0;
 signal vga_v_counter: integer range 0 to 525 := 0;
+-- track color 0=black 1=white;
 signal vga_color: std_logic := '0';
+-- track current state
 type vga_state_h_type is (
 active, -- 640
 front, -- 16
@@ -64,7 +68,7 @@ back -- 31
 signal vga_h_state: vga_state_h_type := active;
 signal vga_v_state: vga_state_v_type := active;
 
-signal vmem_addr: std_logic_vector(17 downto 0);
+signal vmem_addr: std_logic_vector(17 downto 0) := (others => '0');
 begin
 
 red_o <= (others => vga_color);
@@ -86,8 +90,7 @@ port map (
 vga_proc: process(vga_clk)
 begin
   if rising_edge(vga_clk) then
-    vsync_o <= '1';
-    hsync_o <= '1';
+
     vga_color <= '0';
     vga_h_counter <= vga_h_counter + 1;
     -- color
@@ -96,8 +99,10 @@ begin
       if vga_x = 640 then
         vga_h_state <= front;
         vga_h_counter <= 0;
+        vga_x <= 0;
         vga_y <= vga_y + 1;
         if vga_y = 480 then
+          vga_y <= 0;
           vga_pixel <= (others => '0');
           vmem_addr <= (others => '0');
         end if; 
@@ -116,17 +121,16 @@ begin
       when front => 
         if vga_h_counter = 15 then 
           vga_h_state <= sync;
---          vga_h_counter <= '0';
+          vga_h_counter <= 0;
         end if;
       when sync => 
-        hsync_o <= '0';
         if vga_h_counter = 95 then
           vga_h_state <= back;
           vga_h_counter <= 0;
         end if;
       when back => 
         if vga_h_counter = 47 then
-          vga_h_state <= back;
+          vga_h_state <= active;
           vga_h_counter <= 0;
           vga_v_counter <= vga_v_counter + 1;
           case( vga_v_state ) is
@@ -137,7 +141,6 @@ begin
             when front => if vga_v_counter = 10 then
               vga_v_state <= sync;
               vga_v_counter <= 0;
-              vsync_o <= '0'; 
             end if;
             when sync => if vga_v_counter = 1 then
               vga_v_state <= back;
@@ -153,10 +156,11 @@ begin
     end case ;
 
     if vga_v_state = sync then
-      vsync_o <= '0';
       vga_color <= '0';
     end if;
   end if;
 end process vga_proc;
 
+vsync_o <= '1' when vga_v_state /= sync else '0';
+hsync_o <= '1' when vga_h_state /= sync else '0';
 end Behavioral;
