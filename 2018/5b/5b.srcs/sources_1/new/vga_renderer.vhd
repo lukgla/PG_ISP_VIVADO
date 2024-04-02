@@ -59,11 +59,24 @@ front, -- 16
 sync, -- 96
 back -- 48
 );
+type vga_h_step_type is array(vga_state_h_type) of natural;
+constant vga_h_step: vga_h_step_type := (
+  active => 640,
+  front => 16,
+  sync => 96,
+  back => 48
+);
 constant state_h_active_steps: natural := 640 - 1;
 constant state_h_front_steps: natural := 16-1;
 constant state_h_sync_steps: natural := 96-1;
 constant state_h_back_steps: natural := 48-1;
-
+type vga_v_step_type is array(vga_state_h_type) of natural;
+constant vga_v_step: vga_v_step_type := (
+  active => 480,
+  front => 10,
+  sync => 2,
+  back => 33
+);
 type vga_state_v_type is (
 active, -- 480
 front, -- 10
@@ -95,6 +108,70 @@ port map (
   rst_i => '0',
   clk_o => vga_clk
 );
+
+vga_state_machine:  process( vga_clk )
+variable next_v_stage: boolean := false;
+begin
+  if rising_edge(vga_clk) then
+    vga_h_counter <= vga_h_counter + 1;
+    case vga_h_state is
+      when active => 
+        if vga_h_counter = vga_h_step(active) then
+          vga_h_counter <= 0;
+          vga_h_state <= front;
+        end if;
+      when front =>         
+        if vga_h_counter = vga_h_step(front) then
+          vga_h_counter <= 0;
+          vga_h_state <= sync;
+        end if;
+      when sync =>         
+        if vga_h_counter = vga_h_step(sync) then
+          vga_h_counter <= 0;
+          vga_h_state <= back;
+        end if;
+      when back =>
+        if vga_h_counter = vga_h_step(back) then
+          vga_h_counter <= 0;
+          vga_h_state <= active;
+          next_v_stage := true;
+        end if;
+    end case;
+    if next_v_stage = true then
+      next_v_stage := false;
+      vga_v_counter <= vga_v_counter+1;
+      case vga_v_state is
+        when active => 
+          if vga_v_counter = vga_v_step(active) then
+            vga_v_counter <= 0;
+            vga_v_state <= front;
+          end if ;
+        when front =>
+        if vga_v_counter = vga_v_step(front) then
+          vga_v_counter <= 0;
+          vga_v_state <= sync;
+        end if ;
+        when sync =>
+        if vga_v_counter = vga_v_step(sync) then
+          vga_v_counter <= 0;
+          vga_v_state <= back;
+        end if ;
+        when back =>
+        if vga_v_counter = vga_v_step(back) then
+          vga_v_counter <= 0;
+          vga_v_state <= active;
+        end if ;
+      end case;
+    end if;  
+  end if;
+end process;
+
+vga_signal : process( vga_h_state,vga_v_state )
+begin
+  if vga_h_state = active and vga_v_state = active then
+    
+  end if ;
+end process;
 
 vga_proc: process(vga_clk)
 begin
