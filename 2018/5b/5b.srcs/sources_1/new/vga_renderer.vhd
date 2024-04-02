@@ -59,12 +59,21 @@ front, -- 16
 sync, -- 96
 back -- 48
 );
+constant state_h_active_steps: natural := 640 - 1;
+constant state_h_front_steps: natural := 16-1;
+constant state_h_sync_steps: natural := 96-1;
+constant state_h_back_steps: natural := 48-1;
+
 type vga_state_v_type is (
 active, -- 480
-front, -- 11
+front, -- 10
 sync, -- 2
-back -- 31
+back -- 33
 );
+constant state_v_active_steps: natural := 480 - 1;
+constant state_v_front_steps: natural := 10-1;
+constant state_v_sync_steps: natural := 2-1;
+constant state_v_back_steps: natural := 33-1;
 signal vga_h_state: vga_state_h_type := active;
 signal vga_v_state: vga_state_v_type := active;
 
@@ -96,12 +105,12 @@ begin
     -- color
     case( vga_h_state ) is
       when active => 
-      if vga_x = 639 then
+      if vga_x = state_h_active_steps then
         vga_h_state <= front;
         vga_h_counter <= 0;
         vga_x <= 0;
         vga_y <= vga_y + 1;
-        if vga_y = 479 then
+        if vga_y = state_v_active_steps then
           vga_y <= 0;
           vga_pixel <= (others => '0');
           vmem_addr <= (others => '0');
@@ -119,34 +128,34 @@ begin
         end if;
       end if;  
       when front => 
-        if vga_h_counter = 15 then 
+        if vga_h_counter = state_h_front_steps then 
           vga_h_state <= sync;
           vga_h_counter <= 0;
         end if;
       when sync => 
-        if vga_h_counter = 95 then
+        if vga_h_counter = state_h_sync_steps then
           vga_h_state <= back;
           vga_h_counter <= 0;
         end if;
       when back => 
-        if vga_h_counter = 47 then
+        if vga_h_counter = state_h_back_steps then
           vga_h_state <= active;
           vga_h_counter <= 0;
           vga_v_counter <= vga_v_counter + 1;
           case( vga_v_state ) is
-            when active => if vga_v_counter = 479 then
+            when active => if vga_v_counter = state_v_active_steps then
               vga_v_state <= front;
               vga_v_counter <= 0; 
             end if;
-            when front => if vga_v_counter = 10 then
+            when front => if vga_v_counter = state_v_front_steps then
               vga_v_state <= sync;
               vga_v_counter <= 0;
             end if;
-            when sync => if vga_v_counter = 1 then
+            when sync => if vga_v_counter = state_v_sync_steps then
               vga_v_state <= back;
               vga_v_counter <= 0; 
             end if;
-            when back => if vga_v_counter = 30 then
+            when back => if vga_v_counter = state_v_back_steps then
               vga_v_state <= active;
               vga_v_counter <= 0;
               -- reset 
