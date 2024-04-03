@@ -99,7 +99,6 @@ port map (
   rst_i => '0',
   clk_o => vga_clk
 );
-
 vga_state_machine:  process( vga_clk )
 variable next_v_stage: boolean := false;
 begin
@@ -184,7 +183,7 @@ begin
     if vga_h_state = active and vga_v_state = active then
       x <= x + 1;
       -- if vmem_data_i /= "0" then
-      color <= '1';
+      color <= vmem_data_i(0);
       -- end if;
       pixel_addr <= pixel_addr + 1;
       vmem_addr <= std_logic_vector(pixel_addr + 1);          
