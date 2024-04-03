@@ -54,20 +54,26 @@ signal v_counter: integer range 0 to 525-1 := 0;
 signal color: std_logic := '0';
 -- track current state
 type vga_state_type is (
+pre_active,
 active, -- 640
+post_active,
 front, -- 16
 sync, -- 96
 back -- 48
 );
 type vga_step_type is array(vga_state_type) of natural;
 constant vga_h_step: vga_step_type := (
-  active => 640-1,
+  pre_active => 128-1, -- (640-384)/2,
+  active => 384-1, --,640-1,
+  post_active => 128-1,
   front => 16-1,
   sync => 96-1,
   back => 48-1
 );
 constant vga_v_step: vga_step_type := (
-  active => 480-1,
+  pre_active => 48-1,
+  active => 384-1,--480-1,
+  post_active => 48-1,
   front => 10-1,
   sync => 2-1,
   back => 33-1
@@ -100,8 +106,18 @@ begin
   if rising_edge(vga_clk) then
     h_counter <= h_counter + 1;
     case vga_h_state is
+      when pre_active => 
+        if h_counter = vga_h_step(pre_active) then
+          h_counter <= 0;
+          vga_h_state <= active;
+        end if;
       when active => 
         if h_counter = vga_h_step(active) then
+          h_counter <= 0;
+          vga_h_state <= post_active;
+        end if;
+        when post_active => 
+        if h_counter = vga_h_step(post_active) then
           h_counter <= 0;
           vga_h_state <= front;
         end if;
@@ -126,11 +142,21 @@ begin
       next_v_stage := false;
       v_counter <= v_counter+1;
       case vga_v_state is
+        when pre_active => 
+          if v_counter = vga_v_step(pre_active) then
+            v_counter <= 0;
+            vga_v_state <= active;
+          end if;
         when active => 
           if v_counter = vga_v_step(active) then
             v_counter <= 0;
-            vga_v_state <= front;
+            vga_v_state <= post_active;
           end if ;
+        when post_active => 
+          if v_counter = vga_v_step(post_active) then
+            v_counter <= 0;
+            vga_v_state <= front;
+          end if ;  
         when front =>
         if v_counter = vga_v_step(front) then
           v_counter <= 0;
@@ -154,18 +180,14 @@ end process;
 vga_signal : process( vga_clk)
 begin
   if rising_edge(vga_clk) then    
+  color <= '0';
     if vga_h_state = active and vga_v_state = active then
-      color <= '0';
       x <= x + 1;
-      if y >= (480- 384)/2 and y < ((480- 384)/2+384) then
-        if x >= (640- 384)/2 and x < ((640- 384)/2+384) then
-          -- if vmem_data_i /= "0" then
-          color <= '1';
-          -- end if;
-          pixel_addr <= pixel_addr + 1;
-          vmem_addr <= std_logic_vector(pixel_addr + 1);          
-        end if;
-      end if;
+      -- if vmem_data_i /= "0" then
+      color <= '1';
+      -- end if;
+      pixel_addr <= pixel_addr + 1;
+      vmem_addr <= std_logic_vector(pixel_addr + 1);          
     end if ;
     -- front
     if vga_h_state = front and h_counter = 0 then
