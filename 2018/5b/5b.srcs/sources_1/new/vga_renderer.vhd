@@ -166,87 +166,44 @@ begin
   end if;
 end process;
 
-vga_signal : process( vga_h_state,vga_v_state )
+vga_signal : process( vga_clk)
 begin
-  if vga_h_state = active and vga_v_state = active then
-    
-  end if ;
-end process;
-
-vga_proc: process(vga_clk)
-begin
-  if rising_edge(vga_clk) then
-
-    vga_color <= '0';
-    vga_h_counter <= vga_h_counter + 1;
-    -- color
-    case( vga_h_state ) is
-      when active => 
-      if vga_x = state_h_active_steps then
-        vga_h_state <= front;
-        vga_h_counter <= 0;
-        vga_x <= 0;
-        vga_y <= vga_y + 1;
-        if vga_y = state_v_active_steps then
-          vga_y <= 0;
-          vga_pixel <= (others => '0');
-          vmem_addr <= (others => '0');
-        end if; 
-      else  
-        vga_x <= vga_x + 1;
-      end if;
-      if vga_v_state=active and vga_y >= (480- 384)/2 and vga_y < ((480- 384)/2+384) then
+  if rising_edge(vga_clk) then    
+    if vga_h_state = active and vga_v_state = active then
+      vga_color <= '0';
+      vga_x <= vga_x + 1;
+      if vga_y >= (480- 384)/2 and vga_y < ((480- 384)/2+384) then
         if vga_x >= (640- 384)/2 and vga_x < ((640- 384)/2+384) then
-         if vmem_data_i /= "0" then
-           vga_color <= '1';
-         end if;
+        if vmem_data_i /= "0" then
+          vga_color <= '1';
+        end if;
           vga_pixel <= vga_pixel + 1;
           vmem_addr <= std_logic_vector(vga_pixel + 1);          
         end if;
+      end if;
+    end if ;
+    if vga_h_state = front and vga_h_state = 0 then
+      vga_y <= vga_y + 1;
+      if vga_y = 480 - 1 then
+        vga_y <= 0;
+        vga_pixel <= (others => '0');
+        vmem_addr <= (others => '0'); 
       end if;  
-      when front => 
-        if vga_h_counter = state_h_front_steps then 
-          vga_h_state <= sync;
-          vga_h_counter <= 0;
-        end if;
-      when sync => 
-        if vga_h_counter = state_h_sync_steps then
-          vga_h_state <= back;
-          vga_h_counter <= 0;
-        end if;
-      when back => 
-        if vga_h_counter = state_h_back_steps then
-          vga_h_state <= active;
-          vga_h_counter <= 0;
-          vga_v_counter <= vga_v_counter + 1;
-          case( vga_v_state ) is
-            when active => if vga_v_counter = state_v_active_steps then
-              vga_v_state <= front;
-              vga_v_counter <= 0; 
-            end if;
-            when front => if vga_v_counter = state_v_front_steps then
-              vga_v_state <= sync;
-              vga_v_counter <= 0;
-            end if;
-            when sync => if vga_v_counter = state_v_sync_steps then
-              vga_v_state <= back;
-              vga_v_counter <= 0; 
-            end if;
-            when back => if vga_v_counter = state_v_back_steps then
-              vga_v_state <= active;
-              vga_v_counter <= 0;
-              -- reset 
-            end if;
-          end case ;
-        end if;
-    end case ;
-
-    if vga_v_state = sync then
-      vga_color <= '0';
+      vga_x <= 0;
     end if;
   end if;
-end process vga_proc;
+end process;
 
-vsync_o <= '1' when vga_v_state /= sync else '0';
-hsync_o <= '1' when vga_h_state /= sync else '0';
-end Behavioral;
+sync_proc: process(clk)
+begin
+  if rising_edge(clk) then
+    vsync_o <= '1';
+    hsync_o <= '1';
+    if(vga_h_state = sync) then
+      hsync_o <= '0';
+    end if;
+    if(vga_v_state = sync) then
+      vsync_o <= '0';
+    end if;
+  end if;
+end process;

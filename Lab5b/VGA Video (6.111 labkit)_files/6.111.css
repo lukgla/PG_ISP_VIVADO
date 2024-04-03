@@ -1,0 +1,122 @@
+BODY {
+  font-size: 12px;
+  font-family: lucida grande, geneva, helvetica, arial, sans-serif;
+  color: #000000;
+  margin: 0px 0px 0px 0px;
+}
+
+HR {
+  color: #333333;
+  height: 4px;
+}
+
+P {
+  font-size: 12px;
+  font-family: lucida grande, geneva, helvetica, arial, sans-serif;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+/*** Headings ***/
+
+H1 {
+  font-family: lucida grande, geneva, helvetica, arial, sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  margin-top: 40px;
+}
+
+H2 {
+  font-family: lucida grande, geneva, helvetica, arial, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #333333;
+  margin-top: 20px;
+}
+
+H3 {
+  font-family: lucida grande, geneva, helvetica, arial, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+/*** Links ***/
+ 
+A:link          {text-decoration: underline; color: #0000C0}
+A:active        {text-decoration: underline; color: #FF6600}
+A:hover         {text-decoration: underline; color: #FF6600}
+A:visited       {text-decoration: underline; color: #008080}
+A:visited:hover {text-decoration: underline; color: #FF6600}
+
+DT {
+  font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
+  margin: 20px 0px 10px 0px;
+}
+
+DD {
+  font-size: 12px;
+  margin: 0px 0px 0px 20px;
+}
+
+/*** Tables ***/
+
+TD {
+  font-family: lucida grande, geneva, helvetica, arial, sans-serif;
+  font-size: 10px;
+  color:#000000;
+  vertical-align: top;
+}
+
+TH {
+  font-family: lucida grande, geneva, helvetica, arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color:#000000;
+  vertical-align: center;
+}
+  
+/*** Code ***/
+
+PRE {
+  color: #808000;
+}
+
+PRE.log {
+  color: #808000;
+}
+ 
+/*** Paragraphs ***/
+
+P.figure {
+  text-align: center;
+  font-style: italic;
+  margin: 20px 20px 20px 20px;
+  border: 1px solid #000000;
+  padding: 10px;
+}
+
+P.figure IMG {
+  margin: 10px 0px 10px 0px;
+  /* padding: 20px 20px 20px 20px; */
+  /* border: 1px solid #000000; */
+}
+
+P.informal {
+  color: #FF0000;
+}
+
+P.checklist {
+  text-align: center;
+  font-weight: bold;
+  margin: 20px 0px 20px 0px;
+}
+
+/*** Lists ***/
+
+LI {
+  margin: 10px 0px 10px 0px;
+  font-size: 12px;
+}
