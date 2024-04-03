@@ -44,64 +44,49 @@ component clockDivider is
 end component clockDivider;
 signal vga_clk: std_logic := '0';
 -- track display
-signal vga_x: integer range 0 to 639 := 0;
-signal vga_y: integer range 0 to 479 := 0;
-signal vga_pixel: unsigned(17 downto 0) := (others => '0');
+signal x: integer range 0 to 640-1 := 0;
+signal y: integer range 0 to 480-1 := 0;
+signal pixel_addr: unsigned(17 downto 0) := (others => '0');
 -- track state duration
-signal vga_h_counter: integer range 0 to 800 := 0;
-signal vga_v_counter: integer range 0 to 525 := 0;
+signal h_counter: integer range 0 to 800-1 := 0;
+signal v_counter: integer range 0 to 525-1 := 0;
 -- track color 0=black 1=white;
-signal vga_color: std_logic := '0';
+signal color: std_logic := '0';
 -- track current state
-type vga_state_h_type is (
+type vga_state_type is (
 active, -- 640
 front, -- 16
 sync, -- 96
 back -- 48
 );
-type vga_h_step_type is array(vga_state_h_type) of natural;
-constant vga_h_step: vga_h_step_type := (
+type vga_step_type is array(vga_state_type) of natural;
+constant vga_h_step: vga_step_type := (
   active => 640-1,
   front => 16-1,
   sync => 96-1,
   back => 48-1
 );
-constant state_h_active_steps: natural := 640 - 1;
-constant state_h_front_steps: natural := 16-1;
-constant state_h_sync_steps: natural := 96-1;
-constant state_h_back_steps: natural := 48-1;
-type vga_v_step_type is array(vga_state_h_type) of natural;
-constant vga_v_step: vga_v_step_type := (
+constant vga_v_step: vga_step_type := (
   active => 480-1,
   front => 10-1,
   sync => 2-1,
   back => 33-1
 );
-type vga_state_v_type is (
-active, -- 480
-front, -- 10
-sync, -- 2
-back -- 33
-);
-constant state_v_active_steps: natural := 480 - 1;
-constant state_v_front_steps: natural := 10-1;
-constant state_v_sync_steps: natural := 2-1;
-constant state_v_back_steps: natural := 33-1;
-signal vga_h_state: vga_state_h_type := active;
-signal vga_v_state: vga_state_v_type := active;
+signal vga_h_state: vga_state_type := active;
+signal vga_v_state: vga_state_type := active;
 
 signal vmem_addr: std_logic_vector(17 downto 0) := (others => '0');
 begin
 
-red_o <= (others => vga_color);
-green_o <= (others => vga_color);
-blue_o <= (others => vga_color);
+red_o <= (others => color);
+green_o <= (others => color);
+blue_o <= (others => color);
 vmem_addr_o <= vmem_addr;
 
 clk_4: clockDivider
 generic map (
-  one_cycles => 4, -- 25 Mhz
-  zero_cycles => 4
+  one_cycles => 2, -- 25 Mhz
+  zero_cycles => 2
 )
 port map (
   clk_i => clk_i,
@@ -113,52 +98,52 @@ vga_state_machine:  process( vga_clk )
 variable next_v_stage: boolean := false;
 begin
   if rising_edge(vga_clk) then
-    vga_h_counter <= vga_h_counter + 1;
+    h_counter <= h_counter + 1;
     case vga_h_state is
       when active => 
-        if vga_h_counter = vga_h_step(active) then
-          vga_h_counter <= 0;
+        if h_counter = vga_h_step(active) then
+          h_counter <= 0;
           vga_h_state <= front;
         end if;
       when front =>         
-        if vga_h_counter = vga_h_step(front) then
-          vga_h_counter <= 0;
+        if h_counter = vga_h_step(front) then
+          h_counter <= 0;
           vga_h_state <= sync;
         end if;
       when sync =>         
-        if vga_h_counter = vga_h_step(sync) then
-          vga_h_counter <= 0;
+        if h_counter = vga_h_step(sync) then
+          h_counter <= 0;
           vga_h_state <= back;
         end if;
       when back =>
-        if vga_h_counter = vga_h_step(back) then
-          vga_h_counter <= 0;
+        if h_counter = vga_h_step(back) then
+          h_counter <= 0;
           vga_h_state <= active;
           next_v_stage := true;
         end if;
     end case;
     if next_v_stage = true then
       next_v_stage := false;
-      vga_v_counter <= vga_v_counter+1;
+      v_counter <= v_counter+1;
       case vga_v_state is
         when active => 
-          if vga_v_counter = vga_v_step(active) then
-            vga_v_counter <= 0;
+          if v_counter = vga_v_step(active) then
+            v_counter <= 0;
             vga_v_state <= front;
           end if ;
         when front =>
-        if vga_v_counter = vga_v_step(front) then
-          vga_v_counter <= 0;
+        if v_counter = vga_v_step(front) then
+          v_counter <= 0;
           vga_v_state <= sync;
         end if ;
         when sync =>
-        if vga_v_counter = vga_v_step(sync) then
-          vga_v_counter <= 0;
+        if v_counter = vga_v_step(sync) then
+          v_counter <= 0;
           vga_v_state <= back;
         end if ;
         when back =>
-        if vga_v_counter = vga_v_step(back) then
-          vga_v_counter <= 0;
+        if v_counter = vga_v_step(back) then
+          v_counter <= 0;
           vga_v_state <= active;
         end if ;
       end case;
@@ -170,27 +155,27 @@ vga_signal : process( vga_clk)
 begin
   if rising_edge(vga_clk) then    
     if vga_h_state = active and vga_v_state = active then
-      vga_color <= '0';
-      vga_x <= vga_x + 1;
-      if vga_y >= (480- 384)/2 and vga_y < ((480- 384)/2+384) then
-        if vga_x >= (640- 384)/2 and vga_x < ((640- 384)/2+384) then
-          if vmem_data_i /= "0" then
-            vga_color <= '1';
-          end if;
-          vga_pixel <= vga_pixel + 1;
-          vmem_addr <= std_logic_vector(vga_pixel + 1);          
+      color <= '0';
+      x <= x + 1;
+      if y >= (480- 384)/2 and y < ((480- 384)/2+384) then
+        if x >= (640- 384)/2 and x < ((640- 384)/2+384) then
+          -- if vmem_data_i /= "0" then
+          color <= '1';
+          -- end if;
+          pixel_addr <= pixel_addr + 1;
+          vmem_addr <= std_logic_vector(pixel_addr + 1);          
         end if;
       end if;
     end if ;
     -- front
-    if vga_h_state = front and vga_h_counter = 0 then
-      vga_y <= vga_y + 1;
-      if vga_y = 480 - 1 then
-        vga_y <= 0;
-        vga_pixel <= (others => '0');
+    if vga_h_state = front and h_counter = 0 then
+      y <= y + 1;
+      if y = 480 - 1 then
+        y <= 0;
+        pixel_addr <= (others => '0');
         vmem_addr <= (others => '0'); 
       end if;  
-      vga_x <= 0;
+      x <= 0;
     end if;
   end if;
 end process;
