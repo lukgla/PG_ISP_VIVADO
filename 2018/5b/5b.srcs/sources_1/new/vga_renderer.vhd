@@ -182,9 +182,9 @@ begin
   color <= '0';
     if vga_h_state = active and vga_v_state = active then
       x <= x + 1;
-      -- if vmem_data_i /= "0" then
-      color <= vmem_data_i(0);
-      -- end if;
+       if vmem_data_i /= "0" then
+            color <= '1';
+       end if;
       pixel_addr <= pixel_addr + 1;
       vmem_addr <= std_logic_vector(pixel_addr + 1);          
     end if ;
