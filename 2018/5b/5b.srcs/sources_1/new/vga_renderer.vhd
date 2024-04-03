@@ -61,10 +61,10 @@ back -- 48
 );
 type vga_h_step_type is array(vga_state_h_type) of natural;
 constant vga_h_step: vga_h_step_type := (
-  active => 640,
-  front => 16,
-  sync => 96,
-  back => 48
+  active => 640-1,
+  front => 16-1,
+  sync => 96-1,
+  back => 48-1
 );
 constant state_h_active_steps: natural := 640 - 1;
 constant state_h_front_steps: natural := 16-1;
@@ -72,10 +72,10 @@ constant state_h_sync_steps: natural := 96-1;
 constant state_h_back_steps: natural := 48-1;
 type vga_v_step_type is array(vga_state_h_type) of natural;
 constant vga_v_step: vga_v_step_type := (
-  active => 480,
-  front => 10,
-  sync => 2,
-  back => 33
+  active => 480-1,
+  front => 10-1,
+  sync => 2-1,
+  back => 33-1
 );
 type vga_state_v_type is (
 active, -- 480
