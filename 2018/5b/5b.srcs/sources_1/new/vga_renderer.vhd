@@ -174,15 +174,16 @@ begin
       vga_x <= vga_x + 1;
       if vga_y >= (480- 384)/2 and vga_y < ((480- 384)/2+384) then
         if vga_x >= (640- 384)/2 and vga_x < ((640- 384)/2+384) then
-        if vmem_data_i /= "0" then
-          vga_color <= '1';
-        end if;
+          if vmem_data_i /= "0" then
+            vga_color <= '1';
+          end if;
           vga_pixel <= vga_pixel + 1;
           vmem_addr <= std_logic_vector(vga_pixel + 1);          
         end if;
       end if;
     end if ;
-    if vga_h_state = front and vga_h_state = 0 then
+    -- front
+    if vga_h_state = front and vga_h_counter = 0 then
       vga_y <= vga_y + 1;
       if vga_y = 480 - 1 then
         vga_y <= 0;
@@ -194,9 +195,9 @@ begin
   end if;
 end process;
 
-sync_proc: process(clk)
+sync_proc: process(vga_clk)
 begin
-  if rising_edge(clk) then
+  if rising_edge(vga_clk) then
     vsync_o <= '1';
     hsync_o <= '1';
     if(vga_h_state = sync) then
@@ -207,3 +208,5 @@ begin
     end if;
   end if;
 end process;
+
+end architecture Behavioral;
