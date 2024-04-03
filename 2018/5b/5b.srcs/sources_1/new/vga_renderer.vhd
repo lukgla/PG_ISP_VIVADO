@@ -134,7 +134,7 @@ begin
       when back =>
         if h_counter = vga_h_step(back) then
           h_counter <= 0;
-          vga_h_state <= active;
+          vga_h_state <= pre_active;
           next_v_stage := true;
         end if;
     end case;
@@ -170,7 +170,7 @@ begin
         when back =>
         if v_counter = vga_v_step(back) then
           v_counter <= 0;
-          vga_v_state <= active;
+          vga_v_state <= pre_active;
         end if ;
       end case;
     end if;  
