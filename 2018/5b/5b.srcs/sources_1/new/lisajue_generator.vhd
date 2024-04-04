@@ -142,11 +142,13 @@ begin
       sgen_conf_en <= '1';
       sgen_conf_data <= ch1_conf;
       sgen_conf_en2 <= '0';
-    when prog2 => null;
+      sgen_state <= prog2;
+    when prog2 =>
       sgen_conf_en <= '1';
       sgen_conf_data <= ch2_conf;
       sgen_conf_en2 <= '1';
       vmem_addr <= (others => '0');
+      sgen_state <= reset;
     when reset =>
       sgen_rst <= '0';
       vmem_addr_o <= std_logic_vector(vmem_addr);

@@ -44,8 +44,6 @@ component clockDivider is
 end component clockDivider;
 signal vga_clk: std_logic := '0';
 -- track display
-signal x: integer range 0 to 640-1 := 0;
-signal y: integer range 0 to 480-1 := 0;
 signal pixel_addr: unsigned(17 downto 0) := (others => '0');
 -- track state duration
 signal h_counter: integer range 0 to 800-1 := 0;
@@ -181,23 +179,13 @@ begin
   if rising_edge(vga_clk) then    
   color <= '0';
     if vga_h_state = active and vga_v_state = active then
-      -- x <= x + 1;
        if vmem_data_i /= "0" then
             color <= '1';
        end if;
       pixel_addr <= pixel_addr + 1;
       vmem_addr <= std_logic_vector(pixel_addr + 1);          
     end if ;
-    -- front
-    -- if vga_h_state = front and h_counter = 0 then
-    --   y <= y + 1;
-    --   if y = 480 - 1 then
-       
-    --   end if;  
-    --   x <= 0;
-    -- end if;
     if vga_v_state = sync and v_counter = 0 then
-      -- y <= 0;
       pixel_addr <= (others => '0');
       vmem_addr <= (others => '0'); 
     end if;
