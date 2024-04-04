@@ -96,6 +96,7 @@ variable y: unsigned(20 downto 0);
 variable sum: unsigned(20 downto 0);
 
 begin
+  if rising_edge(clk_i) then
   sgen_conf_en <= '0';
   sgen_rst <= '1';
   vmem_wr_en <= "0";
@@ -159,7 +160,7 @@ begin
         end if;
       end if;
   end case ;
-  
+  end if;
 end process ; -- sgen_wraper
 
 
