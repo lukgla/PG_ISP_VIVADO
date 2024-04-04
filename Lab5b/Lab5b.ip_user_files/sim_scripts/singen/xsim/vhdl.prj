@@ -1,5 +1,0 @@
-vhdl xil_defaultlib  \
-"../../../../Lab5b.gen/sources_1/ip/singen/sim/singen.vhd" \
-
-# Do not sort compile order
-nosort

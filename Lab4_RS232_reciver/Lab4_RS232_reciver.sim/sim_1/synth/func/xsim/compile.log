@@ -1,7 +1,0 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/lukgla/Desktop/Vivado/Lab4_RS232_reciver/Lab4_RS232_reciver.sim/sim_1/synth/func/xsim/tb_func_synth.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'clockDivider'
-INFO: [VRFC 10-3107] analyzing entity '\clockDivider__parameterized1\'
-INFO: [VRFC 10-3107] analyzing entity 'display'
-INFO: [VRFC 10-3107] analyzing entity 'rs232_reciver'
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/lukgla/Desktop/Vivado/Lab4_RS232_reciver/Lab4_RS232_reciver.srcs/sim_1/new/tb.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'tb'

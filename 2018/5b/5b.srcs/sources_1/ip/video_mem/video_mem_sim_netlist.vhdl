@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Sat Mar 30 18:32:58 2024
+-- Date        : Fri Apr  5 01:05:39 2024
 -- Host        : DESKTOP-L54QMU3 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/Users/lukgla/Desktop/Vivado/2018/5b/5b.srcs/sources_1/ip/video_mem/video_mem_sim_netlist.vhdl
+--               C:/Users/lukgla/Desktop/Vivado/2018/5b/5b.srcs/sources_1/ip/video_mem/video_mem_sim_netlist.vhdl
 -- Design      : video_mem
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
