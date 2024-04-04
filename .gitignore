@@ -1,6 +1,3 @@
-//*.wdb
-/**/*.sim/**
-/**/*.cache/**
-/**/*.ip_user_files/**
-/**/*.runs/**
-!**.bit
+**/*.cache/**
+**/*.runs/*
+**/*.hw/**
