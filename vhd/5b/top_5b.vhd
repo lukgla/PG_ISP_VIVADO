@@ -54,6 +54,16 @@ COMPONENT video_mem
     doutb : OUT STD_LOGIC_VECTOR(0 DOWNTO 0) 
   );
 END COMPONENT;
+COMPONENT lisajue_generator is
+  port (
+    clk_i: in STD_LOGIC;
+    ch1_conf: in STD_LOGIC_VECTOR (31 downto 0);
+    ch2_conf: in STD_LOGIC_VECTOR (31 downto 0);
+    ch_conf_en: in STD_LOGIC_VECTOR (0 downto 0);
+    vmem_addr_o: out STD_LOGIC_VECTOR (17 downto 0);
+    vmem_data_o: out STD_LOGIC_VECTOR (0 downto 0);
+    vmem_wr_en: out STD_LOGIC_VECTOR (0 downto 0));
+end COMPONENT;
 
 -- First channel phase must be 0
 
@@ -65,12 +75,6 @@ signal vmem_i_data: std_logic_vector(0 downto 0):= "0";
 signal vmem_o_data: std_logic_vector(0 downto 0):= "0";
 -- sgen
 
--- signal sgen_ch1_data: std_logic_vector(10 downto 0);
--- signal sgen_ch2_data: std_logic_vector(10 downto 0);
--- signal sgen_ch_selection: unsigned(0 downto 0);
--- vga
-
--- 
 signal sgen_ch1_conf: std_logic_vector(31 downto 0) := (others => '0'); -- phase,hz
 signal sgen_ch2_conf: std_logic_vector(31 downto 0) := (others => '0'); -- phase,hz
 alias sgen_ch1_conf_hz: std_logic_vector is sgen_ch1_conf(15 downto 0);

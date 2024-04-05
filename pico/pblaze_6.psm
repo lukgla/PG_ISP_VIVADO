@@ -1,0 +1,148 @@
+;
+; PiÄty program na Picoblaze
+;
+TABLE 7_segment_decode#, [3F,06,5B,4F,66,6D,7D,07,7F,6F]
+CONSTANT 7seg_el1_port, 	00000001'b
+CONSTANT 7seg_el2_port, 	00000010'b
+CONSTANT 7seg_el3_port, 	00000100'b
+CONSTANT 7seg_el4_port, 	00001000'b
+CONSTANT state_is_editing, 	10000000'b
+; -- port is equal to which one is edited right now
+CONSTANT button_up,   00000010'b
+CONSTANT button_down, 00000001'b
+CONSTANT button_edit, 00001000'b
+CONSTANT button_left, 00001000'b
+CONSTANT button_right, 00000100'b
+
+
+
+NAMEREG sE, buttons
+NAMEREG sF, buttons_old
+NAMEREG sC, state
+; -- internal representation of the number
+NAMEREG sA, port1
+NAMEREG sB, port2
+NAMEREG s9, port3
+NAMEREG s8, port4
+NAMEREG s7, selected_number
+NAMEREG s6, digit_number_7seg
+NAMEREG s5, button_dif
+
+
+
+reset:
+; reset digit to 0000
+CALL get_digit; load 0 
+OUTPUT digit_number_7seg, 00001111'b
+
+
+loop_main:
+	LOAD buttons_old,buttons
+	INPUT buttons, 00; read buttons
+	LOAD button_dif, buttons
+	XOR button_dif, buttons_old
+	JUMP Z, loop_main
+handle_button_change:
+
+handle_button_up:
+	LOAD s1,button_up
+	CALL has_button_changed
+	JUMP Z, handle_button_down
+	CALL is_button_presed
+	JUMP C, handle_button_up_pressed
+	CALL is_button_released
+	JUMP C, handle_button_up_pressed
+	JUMP handle_button_down
+handle_button_up_pressed:
+	ADD port1, 01
+	AND port1, 0F
+	JUMP handle_button_down
+up_released:	
+	JUMP handle_button_down
+handle_button_down:
+	LOAD s1,button_down
+	CALL has_button_changed
+	JUMP Z, loop_main
+	CALL is_button_presed
+	JUMP C, down_pressed
+	CALL is_button_released
+	JUMP C, down_released
+	JUMP loop_main
+down_pressed:
+	sub port1, 01
+	AND port1, 0F
+	JUMP handle_button_down
+down_released:	
+	JUMP handle_button_down
+
+JUMP loop_main
+
+update_pos:
+update_pos_1:
+	TEST s0, 01
+	JUMP Z, update_pos_2
+	LOAD selected_number, port1
+	CALL get_digit
+	OUTPUT digit_number_7seg,7seg_el1_port
+update_pos_2:
+	TEST s0, 02
+	JUMP Z, update_pos_3
+	LOAD selected_number, port2
+	CALL get_digit
+	OUTPUT digit_number_7seg,7seg_el2_port
+update_pos_3:
+	TEST s0, 04
+	JUMP Z, update_pos_4
+	LOAD selected_number, port3
+	CALL get_digit
+	OUTPUT digit_number_7seg,7seg_el3_port
+update_pos_4:
+	TEST s0, 08
+	JUMP Z, update_end
+	LOAD selected_number, port4
+	CALL get_digit
+	OUTPUT digit_number_7seg,7seg_el4_port
+update_end:
+	RETURN
+
+has_button_changed:
+	TEST button_dif,s1
+	RETURN
+
+is_button_presed:
+	TEST buttons,s1
+	RETURN
+
+is_button_released:
+	TEST buttons_old,s1
+	RETURN
+	
+
+
+test_edit:
+	TEST buttons, 00001000'b; 
+	RETURN
+
+get_digit:
+	LOAD s0, tablica'upper
+	LOAD s1, tablica'lower
+	ADD s1,selected_number
+	ADDCY s2,00
+	CALL@ (s0, s1)
+	RETURN
+tablica:
+LOAD&RETURN digit_number_7seg, 7_segment_decode#
+
+
+
+;// ; procedura opĂłĹşniajÄca (opĂłĹşnienie w s4)
+;// delay:
+;// 	LOAD se, s4
+;// delay_1:
+;// 	LOAD sf, 00
+;// delay_2:	
+;// 	SUB sf, 01
+;// 	JUMP NZ, delay_2
+;// 	SUB se, 01
+;// 	JUMP NZ, delay_1
+;// 	RETURN
