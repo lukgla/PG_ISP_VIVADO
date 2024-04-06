@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_6_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="jtag_loader_pkg" />
+            <top_module name="tb_6" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="20433333fs"></ZoomStartTime>
+      <ZoomEndTime time="146033334fs"></ZoomEndTime>
+      <Cursor1Time time="125100000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="150"></NameColumnWidth>
+      <ValueColumnWidth column_width="190"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="29" />
+   <wvobject fp_name="/tb_6/clk_i" type="logic">
+      <obj_property name="ElementShortName">clk_i</obj_property>
+      <obj_property name="ObjectShortName">clk_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/rst_i" type="logic">
+      <obj_property name="ElementShortName">rst_i</obj_property>
+      <obj_property name="ObjectShortName">rst_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/button_i" type="array">
+      <obj_property name="ElementShortName">button_i[3:0]</obj_property>
+      <obj_property name="ObjectShortName">button_i[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/led7_an_o" type="array">
+      <obj_property name="ElementShortName">led7_an_o[3:0]</obj_property>
+      <obj_property name="ObjectShortName">led7_an_o[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/led7_seg_o" type="array">
+      <obj_property name="ElementShortName">led7_seg_o[7:0]</obj_property>
+      <obj_property name="ObjectShortName">led7_seg_o[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/in_port" type="array">
+      <obj_property name="ElementShortName">in_port[7:0]</obj_property>
+      <obj_property name="ObjectShortName">in_port[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/out_port" type="array">
+      <obj_property name="ElementShortName">out_port[7:0]</obj_property>
+      <obj_property name="ObjectShortName">out_port[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/port_id" type="array">
+      <obj_property name="ElementShortName">port_id[7:0]</obj_property>
+      <obj_property name="ObjectShortName">port_id[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/kcpsm6_opcode" type="array">
+      <obj_property name="ElementShortName">kcpsm6_opcode[1:19]</obj_property>
+      <obj_property name="ObjectShortName">kcpsm6_opcode[1:19]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/kcpsm6_status" type="array">
+      <obj_property name="ElementShortName">kcpsm6_status[1:16]</obj_property>
+      <obj_property name="ObjectShortName">kcpsm6_status[1:16]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/sim_s0" type="array">
+      <obj_property name="ElementShortName">sim_s0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_s0[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/sim_s1" type="array">
+      <obj_property name="ElementShortName">sim_s1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_s1[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/sim_s2" type="array">
+      <obj_property name="ElementShortName">sim_s2[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_s2[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/sim_s3" type="array">
+      <obj_property name="ElementShortName">sim_s3[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_s3[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/sim_s4" type="array">
+      <obj_property name="ElementShortName">sim_s4[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_s4[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/sim_s5" type="array">
+      <obj_property name="ElementShortName">sim_s5[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_s5[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/sim_s6" type="array">
+      <obj_property name="ElementShortName">sim_s6[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_s6[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/sim_s7" type="array">
+      <obj_property name="ElementShortName">sim_s7[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_s7[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/sim_s8" type="array">
+      <obj_property name="ElementShortName">sim_s8[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_s8[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/sim_s9" type="array">
+      <obj_property name="ElementShortName">sim_s9[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_s9[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/sim_sA" type="array">
+      <obj_property name="ElementShortName">sim_sA[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_sA[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/sim_sB" type="array">
+      <obj_property name="ElementShortName">sim_sB[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_sB[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/sim_sC" type="array">
+      <obj_property name="ElementShortName">sim_sC[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_sC[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/sim_sD" type="array">
+      <obj_property name="ElementShortName">sim_sD[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_sD[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/sim_sE" type="array">
+      <obj_property name="ElementShortName">sim_sE[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_sE[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/processor/sim_sF" type="array">
+      <obj_property name="ElementShortName">sim_sF[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sim_sF[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/write_strobe" type="logic">
+      <obj_property name="ElementShortName">write_strobe</obj_property>
+      <obj_property name="ObjectShortName">write_strobe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/read_strobe" type="logic">
+      <obj_property name="ElementShortName">read_strobe</obj_property>
+      <obj_property name="ObjectShortName">read_strobe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_6/top_6_inst/digit_i" type="array">
+      <obj_property name="ElementShortName">digit_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">digit_i[31:0]</obj_property>
+   </wvobject>
+</wave_config>

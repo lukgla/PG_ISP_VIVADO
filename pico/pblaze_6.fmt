@@ -26,6 +26,7 @@
                           NAMEREG s5, button_dif
                    reset: 
                           ; reset digit to 0000
+                          LOAD selected_number, 00
                           CALL get_digit                                   ; load 0
                           OUTPUT digit_number_7seg, 00001111'b
                loop_main: 
@@ -47,6 +48,8 @@
 handle_button_up_pressed: 
                           ADD port1, 01
                           AND port1, 0F
+                          LOAD s0, 01
+                          CALL update_pos
                           JUMP handle_button_down
              up_released: 
                           JUMP handle_button_down
@@ -62,6 +65,8 @@ handle_button_up_pressed:
             down_pressed: 
                           SUB port1, 01
                           AND port1, 0F
+                          LOAD s0, 01
+                          CALL update_pos
                           JUMP handle_button_down
            down_released: 
                           JUMP handle_button_down
@@ -73,18 +78,21 @@ handle_button_up_pressed:
                           LOAD selected_number, port1
                           CALL get_digit
                           OUTPUT digit_number_7seg, 7seg_el1_port
+                          JUMP update_end
             update_pos_2: 
                           TEST s0, 02
                           JUMP Z, update_pos_3
                           LOAD selected_number, port2
                           CALL get_digit
                           OUTPUT digit_number_7seg, 7seg_el2_port
+                          JUMP update_end
             update_pos_3: 
                           TEST s0, 04
                           JUMP Z, update_pos_4
                           LOAD selected_number, port3
                           CALL get_digit
                           OUTPUT digit_number_7seg, 7seg_el3_port
+                          JUMP update_end
             update_pos_4: 
                           TEST s0, 08
                           JUMP Z, update_end
@@ -109,7 +117,7 @@ handle_button_up_pressed:
                           LOAD s0, tablica'upper
                           LOAD s1, tablica'lower
                           ADD s1, selected_number
-                          ADDCY s2, 00
+                          ADDCY s0, 00
                           CALL@ (s0, s1)
                           RETURN 
                  tablica: 
