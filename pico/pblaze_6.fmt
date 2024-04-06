@@ -24,6 +24,8 @@
                           NAMEREG s7, selected_number
                           NAMEREG s6, digit_number_7seg
                           NAMEREG s5, button_dif
+                          NAMEREG s4, counter
+                          LOAD state, 7seg_el1_port
                    reset: 
                           ; reset digit to 0000
                           LOAD selected_number, 00
@@ -31,11 +33,34 @@
                           OUTPUT digit_number_7seg, 00001111'b
                loop_main: 
                           LOAD buttons_old, buttons
+                          ; up clock if not zero with bound check
+                          COMPARE counter, 00
+                          JUMP Z, scan_buttons
+                          COMPARE counter, FF
+                          JUMP Z, scan_buttons
+                          ADD counter, 01
+            scan_buttons: 
                           INPUT buttons, 00                                ; read buttons
                           LOAD button_dif, buttons
                           XOR button_dif, buttons_old
                           JUMP Z, loop_main
     handle_button_change: 
+                          TEST state, state_is_editing
+                          JUMP Z, handle_button_up
+             handle_left: 
+                          LOAD s1, button_left
+                          CALL has_button_changed
+                          JUMP Z, handle_right
+                          CALL is_button_presed
+                          JUMP Z, handle_right
+                          CALL left_shift
+            handle_right: 
+                          LOAD s1, button_right
+                          CALL has_button_changed
+                          JUMP Z, handle_button_up
+                          CALL is_button_presed
+                          JUMP Z, handle_button_up
+                          CALL right_shift
         handle_button_up: 
                           LOAD s1, button_up
                           CALL has_button_changed
@@ -46,14 +71,22 @@
                           JUMP C, handle_button_up_pressed
                           JUMP handle_button_down
 handle_button_up_pressed: 
-                          ADD port1, 01
-                          AND port1, 0F
-                          LOAD s0, 01
-                          CALL update_pos
+                          LOAD counter, 01
                           JUMP handle_button_down
              up_released: 
+                          COMPARE counter, FF
+                          JUMP Z, up_short
+                 up_long: 
+                          XOR state, state_is_editing
+                          LOAD counter, 00
+                          JUMP handle_button_down
+                up_short: 
+                          CALL inc_selected
+                          LOAD counter, 00
                           JUMP handle_button_down
       handle_button_down: 
+                          TEST state, state_is_editing
+                          JUMP C, loop_main
                           LOAD s1, button_down
                           CALL has_button_changed
                           JUMP Z, loop_main
@@ -63,10 +96,7 @@ handle_button_up_pressed:
                           JUMP C, down_released
                           JUMP loop_main
             down_pressed: 
-                          SUB port1, 01
-                          AND port1, 0F
-                          LOAD s0, 01
-                          CALL update_pos
+                          CALL dec_selected
                           JUMP handle_button_down
            down_released: 
                           JUMP handle_button_down
@@ -100,6 +130,69 @@ handle_button_up_pressed:
                           CALL get_digit
                           OUTPUT digit_number_7seg, 7seg_el4_port
               update_end: 
+                          RETURN 
+            inc_selected: 
+          inc_selected_1: 
+                          TEST state, 7seg_el1_port
+                          JUMP Z, inc_selected_2
+                          ADD port1, 01
+                          AND port1, 0F
+          inc_selected_2: 
+                          TEST state, 7seg_el2_port
+                          JUMP Z, inc_selected_3
+                          ADD port2, 01
+                          AND port2, 0F
+          inc_selected_3: 
+                          TEST state, 7seg_el3_port
+                          JUMP Z, inc_selected_4
+                          ADD port3, 01
+                          AND port3, 0F
+          inc_selected_4: 
+                          TEST state, 7seg_el4_port
+                          ADD port4, 01
+                          AND port4, 0F
+                 inc_end: 
+                          LOAD s0, state
+                          CALL update_pos
+                          RETURN 
+            dec_selected: 
+          dec_selected_1: 
+                          TEST state, 7seg_el1_port
+                          JUMP Z, dec_selected_2
+                          SUB port1, 01
+                          AND port1, 0F
+          dec_selected_2: 
+                          TEST state, 7seg_el2_port
+                          JUMP Z, dec_selected_3
+                          SUB port2, 01
+                          AND port2, 0F
+          dec_selected_3: 
+                          TEST state, 7seg_el3_port
+                          JUMP Z, dec_selected_4
+                          SUB port3, 01
+                          AND port3, 0F
+          dec_selected_4: 
+                          TEST state, 7seg_el4_port
+                          SUB port4, 01
+                          AND port4, 0F
+                 dec_end: 
+                          LOAD s0, state
+                          CALL update_pos
+                          RETURN 
+              left_shift: 
+                          SL0 state
+                          TEST state, 00010000'b
+                          JUMP Z, left_shift_end
+                          LOAD state, 7seg_el1_port
+          left_shift_end: 
+                          OR state, state_is_editing
+                          RETURN 
+             right_shift: 
+                          SR0 state
+                          JUMP NC, right_shift_end
+                          OR state, 7seg_el4_port
+         right_shift_end: 
+                          XOR state, 11000000'b
                           RETURN 
       has_button_changed: 
                           TEST button_dif, s1
