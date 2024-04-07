@@ -1,7 +1,7 @@
 ;
 ; PiÄty program na Picoblaze
 ;
-TABLE 7_segment_decode#, [3F,06,5B,4F,66,6D,7D,07,7F,6F]
+TABLE 7_segment_decode#, [3F,06,5B,4F,66,6D,7D,07,7F,6F,FF]
 CONSTANT 7seg_el1_port, 	00000001'b
 CONSTANT 7seg_el2_port, 	00000010'b
 CONSTANT 7seg_el3_port, 	00000100'b
@@ -27,7 +27,8 @@ NAMEREG s8, port4
 NAMEREG s7, selected_number
 NAMEREG s6, digit_number_7seg
 NAMEREG s5, button_dif
-NAMEREG s4, counter
+NAMEREG s4, button_up_counter
+NAMEREG s3, blink_counter
 
 
 
@@ -41,12 +42,14 @@ OUTPUT digit_number_7seg, 00001111'b
 
 loop_main:
 	LOAD buttons_old,buttons
+; blink
+	CALL blink_selected
 ; up clock if not zero with bound check
-	COMPARE counter, 00
+	COMPARE button_up_counter, 00
 	JUMP Z, scan_buttons
-	COMPARE counter, FF
+	COMPARE button_up_counter, FF
 	JUMP Z, scan_buttons
-	ADD counter, 01
+	ADD button_up_counter, 01
 
 scan_buttons:
 	INPUT buttons, 00; read buttons
@@ -82,18 +85,20 @@ handle_button_up:
 	JUMP C, handle_button_up_pressed
 	JUMP handle_button_down
 handle_button_up_pressed:
-	LOAD counter, 01
+	LOAD button_up_counter, 01
 	JUMP handle_button_down
 up_released:
-	COMPARE counter, FF
+	COMPARE button_up_counter, FF
 	JUMP Z, up_short
 up_long:
 	XOR state, state_is_editing
-	LOAD counter, 00
+	LOAD button_up_counter, 00
+	load s0,state
+	CALL update_pos ; reset to number blinking
 	JUMP handle_button_down
 up_short:
 	CALL inc_selected
-	LOAD counter, 00
+	LOAD button_up_counter, 00
 	JUMP handle_button_down
 handle_button_down:
 	TEST state,state_is_editing
@@ -212,6 +217,20 @@ right_shift_end:
 	XOR state, 11000000'b
 	RETURN
 
+blink_selected:
+	TEST state,state_is_editing
+	JUMP C, blink_on
+	RETURN 
+blink_on:
+	TEST blink_counter, 10
+	JUMP C,blink_end
+	LOAD s2,01
+blink_end:
+	Load s0,state
+	call update_pos
+	LOAD s2,00
+	RETURN
+
 
 has_button_changed:
 	TEST button_dif,s1
@@ -234,6 +253,11 @@ test_edit:
 get_digit:
 	LOAD s0, tablica'upper
 	LOAD s1, tablica'lower
+	COMPARE s2, 00
+	JUMP Z, get_digit_next
+get_digit_blink:
+	LOAD selected_number,10
+get_digit_next:
 	ADD s1,selected_number
 	ADDCY s0,00
 	CALL@ (s0, s1)
