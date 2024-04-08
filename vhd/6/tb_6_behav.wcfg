@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="20433333fs"></ZoomStartTime>
-      <ZoomEndTime time="146033334fs"></ZoomEndTime>
-      <Cursor1Time time="125100000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="126400000000001fs"></ZoomEndTime>
+      <Cursor1Time time="7008905100000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="150"></NameColumnWidth>
-      <ValueColumnWidth column_width="190"></ValueColumnWidth>
+      <ValueColumnWidth column_width="182"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="29" />
    <wvobject fp_name="/tb_6/clk_i" type="logic">
@@ -79,6 +79,14 @@
    <wvobject fp_name="/tb_6/top_6_inst/processor/sim_s4" type="array">
       <obj_property name="ElementShortName">sim_s4[7:0]</obj_property>
       <obj_property name="ObjectShortName">sim_s4[7:0]</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
+      <obj_property name="CellHeight">100</obj_property>
+      <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_FIXED</obj_property>
+      <obj_property name="AnalogYRangeMin">0.000000</obj_property>
+      <obj_property name="AnalogYRRangeMax">255.000000</obj_property>
+      <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_LINEAR</obj_property>
+      <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
+      <obj_property name="AnalogHorizLine">255.000000</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_6/top_6_inst/processor/sim_s5" type="array">
       <obj_property name="ElementShortName">sim_s5[7:0]</obj_property>

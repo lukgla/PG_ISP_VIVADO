@@ -39,10 +39,11 @@ begin
       clk_o => clk_o
     );
 
-    buttons: process (clk_o) is
+    buttons: process
     begin
-        if rising_edge(clk_o) then
-            button_i <= std_logic_vector(unsigned(button_i) + 1);
-        end if ;
+      wait for 140 ms;
+      button_i <= (1 => '0',others => '0');
+      wait for 30 ms;
+      button_i <= (1 => '1',others => '0');
     end process;
 end architecture;
