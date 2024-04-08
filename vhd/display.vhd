@@ -36,8 +36,8 @@ entity display is
     Port ( clk_i : in STD_LOGIC;
            rst_i: in STD_LOGIC;
            digit_i : in STD_LOGIC_VECTOR (31 downto 0);
-           led7_an_o : out STD_LOGIC_VECTOR (3 downto 0);
-           led7_seg_o : out STD_LOGIC_VECTOR (7 downto 0));
+           led7_an_o : out STD_LOGIC_VECTOR (3 downto 0):=(others => '1');
+           led7_seg_o : out STD_LOGIC_VECTOR (7 downto 0):=(others => '1'));
 end display;
 
 architecture Behavioral of display is
