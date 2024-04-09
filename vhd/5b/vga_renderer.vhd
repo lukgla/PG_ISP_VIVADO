@@ -28,9 +28,9 @@ entity vga_renderer is
            red_o : out STD_LOGIC_VECTOR (3 downto 0);
            green_o : out STD_LOGIC_VECTOR (3 downto 0);
            blue_o : out STD_LOGIC_VECTOR (3 downto 0);
-           hsync_o : out STD_LOGIC;
-           vsync_o : out STD_LOGIC;
-           vmem_addr_o : out STD_LOGIC_VECTOR (17 downto 0);
+           hsync_o : out STD_LOGIC:= '1';
+           vsync_o : out STD_LOGIC:= '1';
+           vmem_addr_o : out STD_LOGIC_VECTOR (17 downto 0):= (others => '0');
            vmem_data_i : in STD_LOGIC_VECTOR (0 downto 0));
 end vga_renderer;
 

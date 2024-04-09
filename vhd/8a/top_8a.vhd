@@ -63,8 +63,8 @@ port map (
   ch1_conf    => sgen_ch1_conf,
   ch2_conf    => sgen_ch2_conf,
   ch_conf_en  => sgen_conf_en,
-  vmem_addr_o => vmem_o_addr,
-  vmem_data_o => vmem_o_data,
+  vmem_addr_o => vmem_i_addr,
+  vmem_data_o => vmem_i_data,
   vmem_wr_en  => vmem_i_en,
   amp_i       => sgen_amp
 );

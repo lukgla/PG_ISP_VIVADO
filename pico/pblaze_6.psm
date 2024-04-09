@@ -42,6 +42,15 @@ OUTPUT digit_number_7seg, 00001111'b
 
 loop_main:
 	LOAD buttons_old,buttons
+	; delay
+	LOAD s0,FF
+	CALL delay
+	LOAD s0,FF
+	CALL delay
+	LOAD s0,FF
+	CALL delay
+	LOAD s0,FF
+	CALL delay
 	LOAD s0,FF
 	CALL delay
 	LOAD s0,FF
