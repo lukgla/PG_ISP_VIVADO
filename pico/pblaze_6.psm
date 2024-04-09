@@ -43,18 +43,12 @@ OUTPUT digit_number_7seg, 00001111'b
 loop_main:
 	LOAD buttons_old,buttons
 	; delay
+	LOAD s1, FF
+delay_loop:
 	LOAD s0,FF
 	CALL delay
-	LOAD s0,FF
-	CALL delay
-	LOAD s0,FF
-	CALL delay
-	LOAD s0,FF
-	CALL delay
-	LOAD s0,FF
-	CALL delay
-	LOAD s0,FF
-	CALL delay
+	COMPARE s1,00
+	JUMP NZ,delay_loop
 ; blink
 	CALL blink_selected
 ; up clock if not zero with bound check
