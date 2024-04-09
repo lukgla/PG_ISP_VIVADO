@@ -1,7 +1,8 @@
 ;
 ; PiÄty program na Picoblaze
 ;
-TABLE 7_segment_decode#, [3F,06,5B,4F,66,6D,7D,07,7F,67,77,7C,39,5E,79,71,FF]
+table 7_segment_decode#, [00000010,10011110,00100100,00001100,10011000,01001000,01000000,00011110,00000000,00010000,00001000,11000000,01100010,10000100,01100000,01110000,11111111]'b
+;gment_decode#, [3F,06,5B,4F,66,6D,7D,07,7F,67,77,7C,39,5E,79,71,FF]
 CONSTANT 7seg_el1_port, 	00000001'b
 CONSTANT 7seg_el2_port, 	00000010'b
 CONSTANT 7seg_el3_port, 	00000100'b
@@ -43,7 +44,7 @@ OUTPUT digit_number_7seg, 00001111'b
 loop_main:
 	LOAD buttons_old,buttons
 	; delay
-	LOAD s1, FF
+	LOAD s1, 10
 delay_loop:
 	LOAD s0,FF
 	CALL delay
