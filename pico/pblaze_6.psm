@@ -97,16 +97,17 @@ handle_button_up_pressed:
 	JUMP handle_button_down
 up_released:
 	COMPARE button_up_counter, FF
+	LOAD button_up_counter, 00
 	JUMP NZ, up_short
 up_long:
 	XOR state, state_is_editing
-	LOAD button_up_counter, 00
 	load s0,state
 	CALL update_pos ; reset to number blinking
 	JUMP handle_button_down
 up_short:
+	TEST state, state_is_editing
+	JUMP NC, handle_button_down;
 	CALL inc_selected
-	LOAD button_up_counter, 00
 	JUMP handle_button_down
 handle_button_down:
 	TEST state,state_is_editing
@@ -209,6 +210,8 @@ dec_end:
 	RETURN
 
 left_shift:
+	LOAD s0,state
+	CALL update_pos
 	SL0 state
 	TEST state, 00010000'b
 	JUMP Z,left_shift_end
@@ -218,6 +221,8 @@ left_shift_end:
 	RETURN
 
 right_shift:
+	LOAD s0,state
+	CALL update_pos
 	SR0 state
 	JUMP NC, right_shift_end
 	OR state, 7seg_el4_port
