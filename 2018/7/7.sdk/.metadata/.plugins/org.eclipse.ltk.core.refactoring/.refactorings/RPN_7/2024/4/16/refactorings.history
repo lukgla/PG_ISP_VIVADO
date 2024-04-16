@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;RPN_7/src/no_blob&apos; to &apos;no_blob.c&apos;" description="Rename resource &apos;no_blob&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/no_blob" name="no_blob.c" stamp="1713258812535" updateReferences="true"/>
+</session>

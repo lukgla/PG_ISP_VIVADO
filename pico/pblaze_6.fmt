@@ -1,7 +1,8 @@
                           ;
                           ; PiÄty program na Picoblaze
                           ;
-                          TABLE 7_segment_decode#, [3F,06,5B,4F,66,6D,7D,07,7F,67,77,7C,39,5E,79,71,FF]
+                          TABLE 7_segment_decode#, [00000011,10011111,00100101,00001101,10011001,01001001,01000001,00011111,00000001,00010001,00001001,11000001,01100011,10000101,01100001,01110001,11111111]'b
+                          ;gment_decode#, [3F,06,5B,4F,66,6D,7D,07,7F,67,77,7C,39,5E,79,71,FF]
                           CONSTANT 7seg_el1_port, 00000001'b
                           CONSTANT 7seg_el2_port, 00000010'b
                           CONSTANT 7seg_el3_port, 00000100'b
@@ -39,7 +40,7 @@
               delay_loop: 
                           LOAD s0, FF
                           CALL delay
-                          COMPARE s1, 00
+                          SUB s1, 01
                           JUMP NZ, delay_loop
                           ; blink
                           CALL blink_selected
@@ -85,16 +86,17 @@ handle_button_up_pressed:
                           JUMP handle_button_down
              up_released: 
                           COMPARE button_up_counter, FF
+                          LOAD button_up_counter, 00
                           JUMP NZ, up_short
                  up_long: 
                           XOR state, state_is_editing
-                          LOAD button_up_counter, 00
                           LOAD s0, state
                           CALL update_pos                                  ; reset to number blinking
                           JUMP handle_button_down
                 up_short: 
+                          TEST state, state_is_editing
+                          JUMP NC, handle_button_down                      ;
                           CALL inc_selected
-                          LOAD button_up_counter, 00
                           JUMP handle_button_down
       handle_button_down: 
                           TEST state, state_is_editing
@@ -192,6 +194,8 @@ handle_button_up_pressed:
                           CALL update_pos
                           RETURN 
               left_shift: 
+                          LOAD s0, state
+                          CALL update_pos
                           SL0 state
                           TEST state, 00010000'b
                           JUMP Z, left_shift_end
@@ -200,6 +204,8 @@ handle_button_up_pressed:
                           OR state, state_is_editing
                           RETURN 
              right_shift: 
+                          LOAD s0, state
+                          CALL update_pos
                           SR0 state
                           JUMP NC, right_shift_end
                           OR state, 7seg_el4_port
