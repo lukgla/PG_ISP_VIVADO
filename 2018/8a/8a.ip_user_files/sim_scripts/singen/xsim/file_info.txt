@@ -1,0 +1,1 @@
+singen.vhd,vhdl,xil_defaultlib,../../../../8a.srcs/sources_1/ip/singen/sim/singen.vhd,
