@@ -6,7 +6,7 @@
 <Project Version="7" Minor="39" Path="/home/lukgla/Documents/GitHub/PG_ISP_VIVADO/2018/7/7.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="f1ee8ee7c6ff4ff1b2c5c8e20792850f"/>
+    <Option Name="Id" Val="8cc161b9c9d941798920f47ba224f753"/>
     <Option Name="Part" Val="xc7a100tcsg324-1"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -67,44 +67,8 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_mdm_1_0/ms_system_mdm_1_0.xci">
-          <Proxy FileSetName="ms_system_mdm_1_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_xbar_0/ms_system_xbar_0.xci">
-          <Proxy FileSetName="ms_system_xbar_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_axi_gpio_0_0/ms_system_axi_gpio_0_0.xci">
-          <Proxy FileSetName="ms_system_axi_gpio_0_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_dlmb_v10_0/ms_system_dlmb_v10_0.xci">
           <Proxy FileSetName="ms_system_dlmb_v10_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_ilmb_v10_0/ms_system_ilmb_v10_0.xci">
-          <Proxy FileSetName="ms_system_ilmb_v10_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_clk_wiz_0_0/ms_system_clk_wiz_0_0.xci">
-          <Proxy FileSetName="ms_system_clk_wiz_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_microblaze_0_0/ms_system_microblaze_0_0.xci">
-          <Proxy FileSetName="ms_system_microblaze_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_microblaze_0_axi_intc_0/ms_system_microblaze_0_axi_intc_0.xci">
-          <Proxy FileSetName="ms_system_microblaze_0_axi_intc_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_axi_timer_0_0/ms_system_axi_timer_0_0.xci">
-          <Proxy FileSetName="ms_system_axi_timer_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_auto_pc_0/ms_system_auto_pc_0.xci">
-          <Proxy FileSetName="ms_system_auto_pc_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_rst_clk_wiz_0_100M_0/ms_system_rst_clk_wiz_0_100M_0.xci">
-          <Proxy FileSetName="ms_system_rst_clk_wiz_0_100M_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_axi_uartlite_0_0/ms_system_axi_uartlite_0_0.xci">
-          <Proxy FileSetName="ms_system_axi_uartlite_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_axi_gpio_1_0/ms_system_axi_gpio_1_0.xci">
-          <Proxy FileSetName="ms_system_axi_gpio_1_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_dlmb_bram_if_cntlr_0/ms_system_dlmb_bram_if_cntlr_0.xci">
           <Proxy FileSetName="ms_system_dlmb_bram_if_cntlr_0"/>
@@ -115,8 +79,35 @@
         <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_lmb_bram_0/ms_system_lmb_bram_0.xci">
           <Proxy FileSetName="ms_system_lmb_bram_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_lmb_v10_0/ms_system_lmb_v10_0.xci">
-          <Proxy FileSetName="ms_system_lmb_v10_0"/>
+        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_xbar_0/ms_system_xbar_0.xci">
+          <Proxy FileSetName="ms_system_xbar_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_rst_clk_wiz_0_100M_0/ms_system_rst_clk_wiz_0_100M_0.xci">
+          <Proxy FileSetName="ms_system_rst_clk_wiz_0_100M_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_mdm_1_0/ms_system_mdm_1_0.xci">
+          <Proxy FileSetName="ms_system_mdm_1_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_axi_gpio_1_0/ms_system_axi_gpio_1_0.xci">
+          <Proxy FileSetName="ms_system_axi_gpio_1_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_axi_uartlite_0_0/ms_system_axi_uartlite_0_0.xci">
+          <Proxy FileSetName="ms_system_axi_uartlite_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_ilmb_v10_0/ms_system_ilmb_v10_0.xci">
+          <Proxy FileSetName="ms_system_ilmb_v10_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_clk_wiz_0_0/ms_system_clk_wiz_0_0.xci">
+          <Proxy FileSetName="ms_system_clk_wiz_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_microblaze_0_0/ms_system_microblaze_0_0.xci">
+          <Proxy FileSetName="ms_system_microblaze_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_axi_timer_0_0/ms_system_axi_timer_0_0.xci">
+          <Proxy FileSetName="ms_system_axi_timer_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="ms_system.bd" FileRelPathName="ip/ms_system_axi_gpio_0_0/ms_system_axi_gpio_0_0.xci">
+          <Proxy FileSetName="ms_system_axi_gpio_0_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/ms_system/hdl/ms_system_wrapper.vhd">
@@ -138,7 +129,6 @@
       </Config>
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1">
-      <Filter Type="Srcs"/>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="ms_system_wrapper"/>
@@ -161,15 +151,15 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="ms_system_clk_wiz_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/ms_system_clk_wiz_0_0">
-      <Config>
-        <Option Name="TopModule" Val="ms_system_clk_wiz_0_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
     <FileSet Name="ms_system_axi_gpio_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/ms_system_axi_gpio_0_0">
       <Config>
         <Option Name="TopModule" Val="ms_system_axi_gpio_0_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="ms_system_clk_wiz_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/ms_system_clk_wiz_0_0">
+      <Config>
+        <Option Name="TopModule" Val="ms_system_clk_wiz_0_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -215,30 +205,6 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="ms_system_lmb_v10_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/ms_system_lmb_v10_0">
-      <Config>
-        <Option Name="TopModule" Val="ms_system_lmb_v10_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="ms_system_xbar_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/ms_system_xbar_0">
-      <Config>
-        <Option Name="TopModule" Val="ms_system_xbar_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="ms_system_auto_pc_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/ms_system_auto_pc_0">
-      <Config>
-        <Option Name="TopModule" Val="ms_system_auto_pc_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="ms_system_microblaze_0_axi_intc_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/ms_system_microblaze_0_axi_intc_0">
-      <Config>
-        <Option Name="TopModule" Val="ms_system_microblaze_0_axi_intc_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
     <FileSet Name="ms_system_mdm_1_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/ms_system_mdm_1_0">
       <Config>
         <Option Name="TopModule" Val="ms_system_mdm_1_0"/>
@@ -248,6 +214,12 @@
     <FileSet Name="ms_system_rst_clk_wiz_0_100M_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/ms_system_rst_clk_wiz_0_100M_0">
       <Config>
         <Option Name="TopModule" Val="ms_system_rst_clk_wiz_0_100M_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="ms_system_xbar_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/ms_system_xbar_0">
+      <Config>
+        <Option Name="TopModule" Val="ms_system_xbar_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -285,7 +257,9 @@
   <Runs Version="1" Minor="10">
     <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7a100tcsg324-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -303,7 +277,7 @@
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="ms_system_clk_wiz_0_0_synth_1" Type="Ft3:Synth" SrcSet="ms_system_clk_wiz_0_0" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_clk_wiz_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/ms_system_clk_wiz_0_0_synth_1" IncludeInArchive="true">
+    <Run Id="ms_system_axi_gpio_0_0_synth_1" Type="Ft3:Synth" SrcSet="ms_system_axi_gpio_0_0" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_axi_gpio_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/ms_system_axi_gpio_0_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
           <Desc>Vivado Synthesis Defaults</Desc>
@@ -314,7 +288,7 @@
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="ms_system_axi_gpio_0_0_synth_1" Type="Ft3:Synth" SrcSet="ms_system_axi_gpio_0_0" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_axi_gpio_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/ms_system_axi_gpio_0_0_synth_1" IncludeInArchive="true">
+    <Run Id="ms_system_clk_wiz_0_0_synth_1" Type="Ft3:Synth" SrcSet="ms_system_clk_wiz_0_0" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_clk_wiz_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/ms_system_clk_wiz_0_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
           <Desc>Vivado Synthesis Defaults</Desc>
@@ -402,50 +376,6 @@
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="ms_system_lmb_v10_0_synth_1" Type="Ft3:Synth" SrcSet="ms_system_lmb_v10_0" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_lmb_v10_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/ms_system_lmb_v10_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="ms_system_xbar_0_synth_1" Type="Ft3:Synth" SrcSet="ms_system_xbar_0" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_xbar_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/ms_system_xbar_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="ms_system_auto_pc_0_synth_1" Type="Ft3:Synth" SrcSet="ms_system_auto_pc_0" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_auto_pc_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/ms_system_auto_pc_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="ms_system_microblaze_0_axi_intc_0_synth_1" Type="Ft3:Synth" SrcSet="ms_system_microblaze_0_axi_intc_0" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_microblaze_0_axi_intc_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/ms_system_microblaze_0_axi_intc_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
     <Run Id="ms_system_mdm_1_0_synth_1" Type="Ft3:Synth" SrcSet="ms_system_mdm_1_0" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_mdm_1_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/ms_system_mdm_1_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
@@ -458,6 +388,17 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
     <Run Id="ms_system_rst_clk_wiz_0_100M_0_synth_1" Type="Ft3:Synth" SrcSet="ms_system_rst_clk_wiz_0_100M_0" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_rst_clk_wiz_0_100M_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/ms_system_rst_clk_wiz_0_100M_0_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="ms_system_xbar_0_synth_1" Type="Ft3:Synth" SrcSet="ms_system_xbar_0" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_xbar_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/ms_system_xbar_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
           <Desc>Vivado Synthesis Defaults</Desc>
@@ -481,7 +422,9 @@
     </Run>
     <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -514,7 +457,7 @@
       <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="ms_system_clk_wiz_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_clk_wiz_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="ms_system_clk_wiz_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="ms_system_axi_gpio_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_axi_gpio_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="ms_system_axi_gpio_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
           <Desc>Default settings for Implementation.</Desc>
@@ -532,7 +475,7 @@
       <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="ms_system_axi_gpio_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_axi_gpio_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="ms_system_axi_gpio_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="ms_system_clk_wiz_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_clk_wiz_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="ms_system_clk_wiz_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
           <Desc>Default settings for Implementation.</Desc>
@@ -676,78 +619,6 @@
       <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="ms_system_lmb_v10_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_lmb_v10_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="ms_system_lmb_v10_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="ms_system_xbar_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_xbar_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="ms_system_xbar_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="ms_system_auto_pc_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_auto_pc_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="ms_system_auto_pc_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="ms_system_microblaze_0_axi_intc_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_microblaze_0_axi_intc_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="ms_system_microblaze_0_axi_intc_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
     <Run Id="ms_system_mdm_1_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_mdm_1_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="ms_system_mdm_1_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
@@ -767,6 +638,24 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
     <Run Id="ms_system_rst_clk_wiz_0_100M_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_rst_clk_wiz_0_100M_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="ms_system_rst_clk_wiz_0_100M_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="ms_system_xbar_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="ms_system_xbar_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="ms_system_xbar_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
           <Desc>Default settings for Implementation.</Desc>

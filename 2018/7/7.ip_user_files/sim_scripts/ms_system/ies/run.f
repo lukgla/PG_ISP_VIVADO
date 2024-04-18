@@ -11,10 +11,6 @@
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/ms_system/ip/ms_system_microblaze_0_0/sim/ms_system_microblaze_0_0.vhd" \
 -endlib
--makelib ies_lib/xil_defaultlib \
-  "../../../bd/ms_system/ip/ms_system_clk_wiz_0_0/ms_system_clk_wiz_0_0_clk_wiz.v" \
-  "../../../bd/ms_system/ip/ms_system_clk_wiz_0_0/ms_system_clk_wiz_0_0.v" \
--endlib
 -makelib ies_lib/axi_lite_ipif_v3_0_4 \
   "../../../../7.srcs/sources_1/bd/ms_system/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd" \
 -endlib
@@ -29,6 +25,12 @@
 -endlib
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/ms_system/ip/ms_system_axi_gpio_0_0/sim/ms_system_axi_gpio_0_0.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/ms_system/ip/ms_system_clk_wiz_0_0/ms_system_clk_wiz_0_0_clk_wiz.v" \
+  "../../../bd/ms_system/ip/ms_system_clk_wiz_0_0/ms_system_clk_wiz_0_0.v" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
   "../../../bd/ms_system/ip/ms_system_axi_gpio_1_0/sim/ms_system_axi_gpio_1_0.vhd" \
 -endlib
 -makelib ies_lib/lib_pkg_v1_0_2 \
@@ -63,8 +65,17 @@
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/ms_system/ip/ms_system_lmb_bram_0/sim/ms_system_lmb_bram_0.v" \
 -endlib
+-makelib ies_lib/mdm_v3_2_15 \
+  "../../../../7.srcs/sources_1/bd/ms_system/ipshared/41ef/hdl/mdm_v3_2_vh_rfs.vhd" \
+-endlib
 -makelib ies_lib/xil_defaultlib \
-  "../../../bd/ms_system/ip/ms_system_lmb_v10_0/sim/ms_system_lmb_v10_0.vhd" \
+  "../../../bd/ms_system/ip/ms_system_mdm_1_0/sim/ms_system_mdm_1_0.vhd" \
+-endlib
+-makelib ies_lib/proc_sys_reset_v5_0_13 \
+  "../../../../7.srcs/sources_1/bd/ms_system/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/ms_system/ip/ms_system_rst_clk_wiz_0_100M_0/sim/ms_system_rst_clk_wiz_0_100M_0.vhd" \
 -endlib
 -makelib ies_lib/generic_baseblocks_v2_1_0 \
   "../../../../7.srcs/sources_1/bd/ms_system/ipshared/b752/hdl/generic_baseblocks_v2_1_vl_rfs.v" \
@@ -92,30 +103,6 @@
 -endlib
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/ms_system/ip/ms_system_xbar_0/sim/ms_system_xbar_0.v" \
--endlib
--makelib ies_lib/axi_protocol_converter_v2_1_18 \
-  "../../../../7.srcs/sources_1/bd/ms_system/ipshared/7a04/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
--endlib
--makelib ies_lib/xil_defaultlib \
-  "../../../bd/ms_system/ip/ms_system_auto_pc_0/sim/ms_system_auto_pc_0.v" \
--endlib
--makelib ies_lib/axi_intc_v4_1_12 \
-  "../../../../7.srcs/sources_1/bd/ms_system/ipshared/31e4/hdl/axi_intc_v4_1_vh_rfs.vhd" \
--endlib
--makelib ies_lib/xil_defaultlib \
-  "../../../bd/ms_system/ip/ms_system_microblaze_0_axi_intc_0/sim/ms_system_microblaze_0_axi_intc_0.vhd" \
--endlib
--makelib ies_lib/mdm_v3_2_15 \
-  "../../../../7.srcs/sources_1/bd/ms_system/ipshared/41ef/hdl/mdm_v3_2_vh_rfs.vhd" \
--endlib
--makelib ies_lib/xil_defaultlib \
-  "../../../bd/ms_system/ip/ms_system_mdm_1_0/sim/ms_system_mdm_1_0.vhd" \
--endlib
--makelib ies_lib/proc_sys_reset_v5_0_13 \
-  "../../../../7.srcs/sources_1/bd/ms_system/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd" \
--endlib
--makelib ies_lib/xil_defaultlib \
-  "../../../bd/ms_system/ip/ms_system_rst_clk_wiz_0_100M_0/sim/ms_system_rst_clk_wiz_0_100M_0.vhd" \
 -endlib
 -makelib ies_lib/axi_timer_v2_0_20 \
   "../../../../7.srcs/sources_1/bd/ms_system/ipshared/e9c1/hdl/axi_timer_v2_0_vh_rfs.vhd" \

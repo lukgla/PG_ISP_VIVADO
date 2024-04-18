@@ -108,10 +108,6 @@ ENTITY ms_system_microblaze_0_0 IS
     Dbg_Shift : IN STD_LOGIC;
     Dbg_Capture : IN STD_LOGIC;
     Dbg_Update : IN STD_LOGIC;
-    Dbg_Trig_In : OUT STD_LOGIC_VECTOR(0 TO 7);
-    Dbg_Trig_Ack_In : IN STD_LOGIC_VECTOR(0 TO 7);
-    Dbg_Trig_Out : IN STD_LOGIC_VECTOR(0 TO 7);
-    Dbg_Trig_Ack_Out : OUT STD_LOGIC_VECTOR(0 TO 7);
     Debug_Rst : IN STD_LOGIC;
     Dbg_Disable : IN STD_LOGIC
   );
@@ -736,10 +732,6 @@ ARCHITECTURE ms_system_microblaze_0_0_arch OF ms_system_microblaze_0_0 IS
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF Dbg_Disable: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG DISABLE";
   ATTRIBUTE X_INTERFACE_INFO OF Debug_Rst: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG RST";
-  ATTRIBUTE X_INTERFACE_INFO OF Dbg_Trig_Ack_Out: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG TRIG_ACK_OUT";
-  ATTRIBUTE X_INTERFACE_INFO OF Dbg_Trig_Out: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG TRIG_OUT";
-  ATTRIBUTE X_INTERFACE_INFO OF Dbg_Trig_Ack_In: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG TRIG_ACK_IN";
-  ATTRIBUTE X_INTERFACE_INFO OF Dbg_Trig_In: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG TRIG_IN";
   ATTRIBUTE X_INTERFACE_INFO OF Dbg_Update: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG UPDATE";
   ATTRIBUTE X_INTERFACE_INFO OF Dbg_Capture: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG CAPTURE";
   ATTRIBUTE X_INTERFACE_INFO OF Dbg_Shift: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG SHIFT";
@@ -791,7 +783,7 @@ ARCHITECTURE ms_system_microblaze_0_0_arch OF ms_system_microblaze_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF Instr_Addr: SIGNAL IS "xilinx.com:interface:lmb:1.0 ILMB ABUS";
   ATTRIBUTE X_INTERFACE_INFO OF Interrupt_Ack: SIGNAL IS "xilinx.com:interface:mbinterrupt:1.0 INTERRUPT ACK";
   ATTRIBUTE X_INTERFACE_INFO OF Interrupt_Address: SIGNAL IS "xilinx.com:interface:mbinterrupt:1.0 INTERRUPT ADDRESS";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF Interrupt: SIGNAL IS "XIL_INTERFACENAME INTERRUPT, SENSITIVITY LEVEL_HIGH, LOW_LATENCY 1";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF Interrupt: SIGNAL IS "XIL_INTERFACENAME INTERRUPT, SENSITIVITY LEVEL_HIGH, LOW_LATENCY 0";
   ATTRIBUTE X_INTERFACE_INFO OF Interrupt: SIGNAL IS "xilinx.com:interface:mbinterrupt:1.0 INTERRUPT INTERRUPT";
   ATTRIBUTE X_INTERFACE_PARAMETER OF Reset: SIGNAL IS "XIL_INTERFACENAME RST.RESET, POLARITY ACTIVE_HIGH, TYPE PROCESSOR, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF Reset: SIGNAL IS "xilinx.com:signal:reset:1.0 RST.RESET RST";
@@ -842,9 +834,9 @@ BEGIN
       C_I_AXI => 0,
       C_USE_MSR_INSTR => 0,
       C_USE_PCMP_INSTR => 0,
-      C_USE_BARREL => 1,
-      C_USE_DIV => 1,
-      C_USE_HW_MUL => 1,
+      C_USE_BARREL => 0,
+      C_USE_DIV => 0,
+      C_USE_HW_MUL => 0,
       C_USE_FPU => 0,
       C_USE_REORDER_INSTR => 1,
       C_UNALIGNED_EXCEPTIONS => 0,
@@ -856,7 +848,7 @@ BEGIN
       C_FSL_EXCEPTION => 0,
       C_USE_STACK_PROTECTION => 0,
       C_IMPRECISE_EXCEPTIONS => 0,
-      C_USE_INTERRUPT => 2,
+      C_USE_INTERRUPT => 1,
       C_USE_EXT_BRK => 0,
       C_USE_EXT_NM_BRK => 0,
       C_USE_NON_SECURE => 0,
@@ -875,7 +867,7 @@ BEGIN
       C_DYNAMIC_BUS_SIZING => 0,
       C_RESET_MSR => X"00000000",
       C_OPCODE_0x0_ILLEGAL => 0,
-      C_DEBUG_ENABLED => 2,
+      C_DEBUG_ENABLED => 1,
       C_DEBUG_INTERFACE => 0,
       C_NUMBER_OF_PC_BRK => 1,
       C_NUMBER_OF_RD_ADDR_BRK => 0,
@@ -1046,10 +1038,8 @@ BEGIN
       Dbg_Shift => Dbg_Shift,
       Dbg_Capture => Dbg_Capture,
       Dbg_Update => Dbg_Update,
-      Dbg_Trig_In => Dbg_Trig_In,
-      Dbg_Trig_Ack_In => Dbg_Trig_Ack_In,
-      Dbg_Trig_Out => Dbg_Trig_Out,
-      Dbg_Trig_Ack_Out => Dbg_Trig_Ack_Out,
+      Dbg_Trig_Ack_In => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 8)),
+      Dbg_Trig_Out => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 8)),
       Dbg_Trace_Clk => '0',
       Dbg_Trace_Ready => '0',
       Debug_Rst => Debug_Rst,
