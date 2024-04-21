@@ -32,7 +32,7 @@ entity vga_renderer is
            vsync_o : out STD_LOGIC:= '1';
            BRAM_PORTB_O_addr: out std_logic_vector(31 downto 0);
            BRAM_PORTB_O_din: out std_logic_vector(31 downto 0);
-           BRAM_PORTB_O_dout: out std_logic_vector(31 downto 0);
+           BRAM_PORTB_O_dout: in std_logic_vector(31 downto 0);
            BRAM_PORTB_O_en: out std_logic;
            BRAM_PORTB_O_rst: out std_logic;
            BRAM_PORTB_O_we: out std_logic_vector(3 downto 0)
@@ -191,7 +191,9 @@ end process;
 vga_signal : process( vga_clk)
 begin
   if rising_edge(vga_clk) then    
-  color <= '0';
+    red_o <= (others => '0');
+    green_o <= (others => '0');
+    blue_o <= (others => '0');
     if vga_h_state = active and vga_v_state = active then
       red_o <= color(7 downto 5)&'0';
       green_o <= color(4 downto 2)&'0';
