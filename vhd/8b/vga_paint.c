@@ -1,4 +1,4 @@
-#include "no_blob.h"
+#include "vga_paint.h"
 
 char * vga_base_addr = ( char*)0xFF; // TODO from Xparam 
 #define VGA_SET_RAW(x,y,c) vga_base_addr[y*384 + x] = c;
@@ -48,6 +48,8 @@ int in_between(int x,int dx,int lb,int ub){
   return nx >= lb && nx < ub;
 }
 
+
+
 void read_uart() {
   int chr;
   int r= 0xFF,g= 0xFF,b = 0xFF;
@@ -55,46 +57,60 @@ void read_uart() {
   int dx,dy;
   int times = 0; 
   while (1) {
-    // chr = inbyte();
+    chr = inbyte();
+    dx=0;
+    dy=0;
     switch (chr) {
-      case 'Z':
+      case 'L':
         vga_clear();
         break;
-      case 'C':
+      case 'P':
         r = read_number_from_uart();
         g = read_number_from_uart();
         b = read_number_from_uart();
         break;
-      case 'U':
+      case 'W':
+        dy = -1;
+        break;
+      case 'S':
+        dy = 1;
+        break;
+      case 'A':
+        dx = -1;
+        break;
       case 'D':
-      case 'L':
-      case 'R':
-        times = read_number_from_uart();
-        dx=0;
-        dy=0;
-        if(chr == 'U'){
-          dy = -1;
-        }else if (chr=='D') {
-          dy = 1;
-        }else if (chr == 'L'){
-          dx = -1;
-        }else{
-          dx = 1;
-        }
-        for (; times > 0; times--) {
-          if (dx && in_between(x, dx, 0, 384)) {
-            x+=dx;
-            VGA_SET(x, y, r, g, b);
-          }else if (dy && in_between(y, dy, 0, 341)) {
-            y+=dy;
-            VGA_SET(x, y, r, g, b);
-          }else{
-            break;
-          }      
-        }
+        dx = 1;
+        break;
+      case 'Q':
+        dx = -1;
+        dy = -1;
+        break;
+      case 'E':
+        dx = 1;
+        dy =-1;
+        break;
+      case 'Z':
+        dx = -1;
+        dy = 1;
+        break;
+      case 'C':
+        dx = 1;
+        dy = 1;
         break;
       default:
         break;
+    }
+    if (dx || dy) {
+      times = read_number_from_uart();
+      for (; times > 0; times--) {
+        if (in_between(x, dx, 0, 384) && in_between(y, dy, 0, 341)) {
+          x+=dx;
+          y+=dy;
+          VGA_SET(x, y, r, g, b);
+        }else{
+          break;
+        }      
+      }
     }
   }
 }
